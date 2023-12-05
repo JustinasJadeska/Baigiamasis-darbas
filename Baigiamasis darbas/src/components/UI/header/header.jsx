@@ -52,16 +52,29 @@ const StyledHeader = styled.header`
         }
     }
 
-    .connect > button {
-        border: 2px solid #ffffff;
+    .connect > button:first-of-type {
+        border: 2px solid #ffdd00;
         padding: 10px 20px;
         background-color: #ffffff00;
         border-radius: 5px;
 
         > a {
             text-decoration: none;
-            color: #ffffff;
+            color: #ffdd00;
             font-weight: 600;
+        }
+    }
+
+    .connect > button:last-of-type {
+        padding: 10px 20px;
+        background-color: #ffdd00;
+        border: 2px solid #ffdd00;
+        border-radius: 5px;
+
+        > a {
+            text-decoration: none;
+            font-weight: 600;
+            color: black;
         }
     }
 `
@@ -85,7 +98,7 @@ const Header = () => {
             </nav>
             <div className='connect'>
                 <button><NavLink className={({isActive}) => isActive ? 'active' : ''}>Log In</NavLink></button>
-                <button><NavLink className={({isActive}) => isActive ? 'active' : ''}>Register</NavLink></button>
+                <button><NavLink className={({isActive}) => isActive ? 'active' : ''}>Sign Up</NavLink></button>
             </div>
         </StyledHeader>
      );

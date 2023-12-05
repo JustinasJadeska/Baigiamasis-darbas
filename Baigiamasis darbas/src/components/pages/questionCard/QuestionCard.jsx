@@ -25,7 +25,7 @@ const StyledLink = styled(Link)`
 const QuestionCard = ({data}) => {
     return ( 
         <StyledCard>
-            <StyledLink to={`/questions/${data.id}`}><h1>{data.name}</h1></StyledLink>
+            <StyledLink to={`/questions/${data.id}`}><h1>{data.topic}</h1></StyledLink>
             <p>{data.question}</p>
         </StyledCard>
      );

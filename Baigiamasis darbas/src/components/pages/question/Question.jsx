@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import ForumQuestionsContext from "../../../contexts/QuestionsContext";
 import ForumAnswersContext from "../../../contexts/AnswersContext";
+import { Link } from "react-router-dom";
 
 const StyledMain = styled.main`
     background-color: #191919;
@@ -65,6 +66,24 @@ const StyledMain = styled.main`
         cursor: pointer;
         width: 80px;
     }
+
+    > a > button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        padding: 10px 20px;
+        font-weight: 600;
+        color: #ffdd00;
+        background-color: #ffdd0000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .bi {
+        font-size: 18px;
+        font-weight: 600;
+    }
 `
 
 const Question = () => {
@@ -91,13 +110,15 @@ const Question = () => {
 
     return ( 
         <StyledMain>
+            <Link to='/questions/allQuestions'><button><i className="bi bi-arrow-left"></i> Go back</button></Link>
             <div>
                 <div className="heading">
-                    <h1>{question.name}</h1>
+                    <h1>{question.topic}</h1>
                     <p>{question.question}</p>
                 </div>
                 <div className="likes2">
                     <h4>Likes: {question.likes}</h4>
+                    <h4>Asked: {question.asked}</h4>
                     <div className="buttons">
                         <button>Edit</button>
                         <button
@@ -117,6 +138,7 @@ const Question = () => {
                                 </div>
                                 <div className="likes">
                                     <h4>Likes: {answer.likes}</h4>
+                                    <h4>Answered: {answer.answered}</h4>
                                     <div className="buttons">
                                         <button>Edit</button>
                                         <button>Delete</button>

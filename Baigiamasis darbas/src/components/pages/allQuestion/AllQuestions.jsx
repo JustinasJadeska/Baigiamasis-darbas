@@ -1,11 +1,11 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import QuestionCard from "../questionCard/QuestionCard";
 import ForumQuestionsContext from "../../../contexts/QuestionsContext";
 
 const StyledQuestions = styled.div`
-    /* height: calc(100vh - 93px);
-    box-sizing: border-box; */
+    position: relative;
     background-color: #191919;
     color: white;
     
@@ -21,6 +21,21 @@ const StyledQuestions = styled.div`
         gap: 20px;
         padding-bottom: 20px;
     }
+
+    > a > button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        /* padding: 10px 20px; */
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        color: #ae00ff;
+        background-color: #ffffff00;
+    }
+
 `
 
 const AllQuestions = () => {
@@ -29,6 +44,7 @@ const AllQuestions = () => {
 
     return ( 
         <StyledQuestions>
+            <Link to='/questions/addNew'><button>Ask Question</button></Link>
             <h1>All questions</h1>
             <div>
                 {
