@@ -12,7 +12,7 @@ const UsersActionTypes = {
 const reducer = (state, action) => {
     switch(action.type){
         case UsersActionTypes.get_all :
-            return state;
+            return action.data;
         case UsersActionTypes.add :
             fetch(`http://localhost:8080/users`, {
                 method: "POST",

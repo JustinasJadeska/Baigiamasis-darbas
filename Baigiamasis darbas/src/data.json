@@ -34,7 +34,7 @@
             "name": "React Native and React",
             "question": "I have started to learn React out of curiosity and wanted to know the difference between React and React Native - though could not find a satisfactory answer using Google. React and React Native seems to have the same format. Do they have completely different syntax?",
             "likes": 2,
-            "modified": true
+            "modified": false
         }, {
             "id": 2,
             "userid": 1,
@@ -48,7 +48,7 @@
             "name": "How to use componentWillMount() in React Hooks?",
             "question": "In the official docs of React it mentions - If you are familiar with React class lifecycle methods, you can think of useEffect Hook as componentDidMount, componentDidUpdate, and componentWillUnmount combined. My question is - how can we use the componentWillMount() lifecyle method in a hook?",
             "likes": 0,
-            "modified": true
+            "modified": false
         }, {
             "id": 4,
             "userid": 2,
@@ -73,7 +73,7 @@
             "userId": 4,
             "answer": "npx is a npm package runner (x probably stands for eXecute). One common way to use npx is to download and run a package temporarily or for trials. create-react-app is an npm package that is expected to be run only once in a project's lifecycle. Hence, it is preferred to use npx to install and run it in a single step. As mentioned in the main page https://www.npmjs.com/package/npx, npx can run commands in the PATH or from node_modules/.bin by default.",
             "likes": 2,
-            "modified": true
+            "modified": false
         }, {
             "id": 2,
             "questionId": 3,
@@ -87,7 +87,7 @@
             "userId": 1,
             "answer": "As the name implies, ReactDOM is the glue between React and the DOM. Often, you will only use it for one single thing: mounting with ReactDOM.render(). Another useful feature of ReactDOM is ReactDOM.findDOMNode() which you can use to gain direct access to a DOM element. (Something you should use sparingly in React apps, but it can be necessary.) If your app is 'isomorphic', you would also use ReactDOM.renderToString() in your back-end code.",
             "likes": 2,
-            "modified": true
+            "modified": false
         }
     ]
 }
