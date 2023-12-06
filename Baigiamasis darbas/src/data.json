@@ -4,29 +4,49 @@
       "id": 1,
       "name": "Justin",
       "email": "justin123@gmail.com",
-      "password": "Gameofthrones1.",
+      "passwordNormal": "Gameofthrones1.",
+      "password": "$2a$08$ARy.nrqXfEsyE34PP4HOiuctWXd1vZTgaQQoNbG.FgKazRKW3HFkm",
       "image": "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1200"
     },
     {
       "id": 2,
       "name": "Steve",
       "email": "stevenson@gmail.com",
-      "password": "Stevenson30?",
+      "passwordNormal": "Stevenson30?",
+      "password": "$2a$08$CAoivitaWMjFj8WavnhHf.eBqa18lsjC5eqa.vhjhUnqJcX9mjrGa",
       "image": "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1200"
     },
     {
       "id": 3,
       "name": "Angel12",
       "email": "angelika@gmail.com",
-      "password": "Godiswithme0.",
+      "passwordNormal": "Godiswithme0.",
+      "password": "$2a$08$pMFxuhsSClQsmhIfFlS8EOJndHoq6Re/XhNcCJ8GmxqKy2Far2HXG",
       "image": "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1200"
     },
     {
       "id": 4,
       "name": "Moonknight",
       "email": "marvelious17@gmail.com",
-      "password": "Heroiam45#",
+      "passwordNormal": "Heroiam45#",
+      "password": "$2a$08$LTslFoxhvyjPBSV9nZ4.9OnsbQHKQxeqggIqXGx/jCNU/k7GLU2Fu",
       "image": "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+      "id": "276cb090-0a1e-4666-875b-90f4323a8733",
+      "name": "Diana",
+      "email": "dinana@gmail.com",
+      "passwordNormal": "Diana123.",
+      "password": "$2a$08$sDM3HMEi9iFdafJ0WSuwpOp2o8yjh.11ucO10yTZ33JzHmsVHHiF2",
+      "image": "https://images.pexels.com/photos/2218786/pexels-photo-2218786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+      "id": "77598949-c50a-45b0-b820-5d4b5ecf88ec",
+      "name": "Jack",
+      "email": "lost@gmail.com",
+      "passwordNormal": "Password1.",
+      "password": "$2a$08$10urwFQQhFtCSlmwkwrC8.PsgUJ8WMTxSUhu3VsPhNCjgAbB/EAcu",
+      "image": "https://images.pexels.com/photos/842980/pexels-photo-842980.jpeg?auto=compress&cs=tinysrgb&w=1200"
     }
   ],
   "questions": [
@@ -67,10 +87,10 @@
       "asked": "2021-12-25"
     },
     {
-      "id": "258233d1-5c8e-454d-aa1b-cffdb1fdfa2a",
-      "topic": "About react",
-      "question": "What is react? And why so many people use it?",
-      "asked": "2023-12-04"
+      "id": "a843d210-4d9c-4e2e-a91e-6e464f28cc06",
+      "topic": "React ",
+      "question": "What is react and how does it work?",
+      "asked": "2023-12-06"
     }
   ],
   "answers": [
