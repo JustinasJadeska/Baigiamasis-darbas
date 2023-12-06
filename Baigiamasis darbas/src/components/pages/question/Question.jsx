@@ -120,7 +120,9 @@ const Question = () => {
                     <h4>Likes: {question.likes}</h4>
                     <h4>Asked: {question.asked}</h4>
                     <div className="buttons">
-                        <button>Edit</button>
+                        <button
+                        onClick={() => navigate(`/questions/edit/question/${id}`)}
+                        >Edit</button>
                         <button
                         onClick={() => {
                             setQuestions({type: QuestionsActionTypes.remove, id: id})
@@ -130,7 +132,7 @@ const Question = () => {
                     </div>
                 </div>
                 <div className="answer">
-                    <h2>Answer:</h2>
+                    <h2>Answers:</h2>
                         {answers.map((answer) => (
                             <div key={answer.id} className="answer2">
                                 <div>
@@ -140,8 +142,15 @@ const Question = () => {
                                     <h4>Likes: {answer.likes}</h4>
                                     <h4>Answered: {answer.answered}</h4>
                                     <div className="buttons">
-                                        <button>Edit</button>
-                                        <button>Delete</button>
+                                        <button
+                                        onClick={() => navigate(`/questions/edit/answer/${id}`)}
+                                        >Edit</button>
+                                        <button
+                                            onClick={() => {
+                                                setAnswer({type: AnswersActionTypes.remove, id: id})
+                                                navigate('/questions/allQuestions')
+                                            }}
+                                        >Delete</button>
                                     </div>
                                 </div>
                             </div>
