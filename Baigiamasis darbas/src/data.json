@@ -27,6 +27,13 @@
       "email": "marvelious17@gmail.com",
       "password": "Heroiam45#",
       "image": "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+      "id": "276cb090-0a1e-4666-875b-90f4323a8733",
+      "name": "Diana",
+      "email": "dinana@gmail.com",
+      "password": "Diana123.",
+      "image": "https://images.pexels.com/photos/2218786/pexels-photo-2218786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     }
   ],
   "questions": [
@@ -65,6 +72,12 @@
       "likes": 1,
       "modified": false,
       "asked": "2021-12-25"
+    },
+    {
+      "id": "a843d210-4d9c-4e2e-a91e-6e464f28cc06",
+      "topic": "React ",
+      "question": "What is react and how does it work?",
+      "asked": "2023-12-06"
     }
   ],
   "answers": [
