@@ -121,7 +121,7 @@ const Question = () => {
                     <h4>Asked: {question.asked}</h4>
                     <div className="buttons">
                         <button
-                        onClick={() => navigate(`/questions/edit/${id}`)}
+                        onClick={() => navigate(`/questions/edit/question/${id}`)}
                         >Edit</button>
                         <button
                         onClick={() => {
@@ -142,8 +142,15 @@ const Question = () => {
                                     <h4>Likes: {answer.likes}</h4>
                                     <h4>Answered: {answer.answered}</h4>
                                     <div className="buttons">
-                                        <button>Edit</button>
-                                        <button>Delete</button>
+                                        <button
+                                        onClick={() => navigate(`/questions/edit/answer/${id}`)}
+                                        >Edit</button>
+                                        <button
+                                            onClick={() => {
+                                                setAnswer({type: AnswersActionTypes.remove, id: id})
+                                                navigate('/questions/allQuestions')
+                                            }}
+                                        >Delete</button>
                                     </div>
                                 </div>
                             </div>
