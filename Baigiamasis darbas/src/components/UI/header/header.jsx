@@ -97,8 +97,8 @@ const Header = () => {
                 </ul>
             </nav>
             <div className='connect'>
-                <button><NavLink className={({isActive}) => isActive ? 'active' : ''}>Log In</NavLink></button>
-                <button><NavLink className={({isActive}) => isActive ? 'active' : ''}>Sign Up</NavLink></button>
+                <button><NavLink to='/user/login' className={({isActive}) => isActive ? 'active' : ''}>Log In</NavLink></button>
+                <button><NavLink to='/user/register' className={({isActive}) => isActive ? 'active' : ''}>Sign Up</NavLink></button>
             </div>
         </StyledHeader>
      );
