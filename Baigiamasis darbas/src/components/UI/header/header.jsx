@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import UsersContext from '../../../contexts/UsersContext';
 
 const StyledHeader = styled.header`
     display: flex;
@@ -77,9 +79,28 @@ const StyledHeader = styled.header`
             color: black;
         }
     }
+
+    .logout > button {
+        border: 2px solid #ffdd00;
+        padding: 10px 20px;
+        background-color: #ffffff00;
+        border-radius: 5px;
+        color: #ffdd00;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .logout > span {
+        font-weight: 600;
+        font-size: 16px;
+    }
 `
 
 const Header = () => {
+
+    const {loggedInUser, setLoggedInUser} = useContext(UsersContext);
+    const navigate = useNavigate()
+
     return ( 
         <StyledHeader>
             <div>
@@ -96,10 +117,22 @@ const Header = () => {
                     ><NavLink to='/questions/allQuestions'>Forum</NavLink></li>
                 </ul>
             </nav>
-            <div className='connect'>
-                <button><NavLink to='/user/login' className={({isActive}) => isActive ? 'active' : ''}>Log In</NavLink></button>
-                <button><NavLink to='/user/register' className={({isActive}) => isActive ? 'active' : ''}>Sign Up</NavLink></button>
-            </div>
+            {
+                !loggedInUser ?
+                <div className='connect'>
+                    <button><NavLink to='/user/login' className={({isActive}) => isActive ? 'active' : ''}>Log In</NavLink></button>
+                    <button><NavLink to='/user/register' className={({isActive}) => isActive ? 'active' : ''}>Sign Up</NavLink></button>
+                </div> :
+                <div className='logout'>
+                    <span>{loggedInUser.name}</span>
+                    <button
+                    onClick={() => {
+                        setLoggedInUser('');
+                        navigate('/')
+                    }}
+                    >Log Out</button>
+                </div>
+            }
         </StyledHeader>
      );
 }

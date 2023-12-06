@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import QuestionCard from "../questionCard/QuestionCard";
 import ForumQuestionsContext from "../../../contexts/QuestionsContext";
+import UsersContext from "../../../contexts/UsersContext";
 
 const StyledQuestions = styled.div`
     position: relative;
@@ -41,10 +42,13 @@ const StyledQuestions = styled.div`
 const AllQuestions = () => {
 
     const {questions} = useContext(ForumQuestionsContext);
+    const {loggedInUser} = useContext(UsersContext);
 
     return ( 
         <StyledQuestions>
-            <Link to='/questions/addNew'><button>Ask Question</button></Link>
+            {
+                loggedInUser && <Link to='/questions/addNew'><button>Ask Question</button></Link>
+            }
             <h1>All questions</h1>
             <div>
                 {

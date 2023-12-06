@@ -4,6 +4,7 @@ import styled from "styled-components";
 import ForumQuestionsContext from "../../../contexts/QuestionsContext";
 import ForumAnswersContext from "../../../contexts/AnswersContext";
 import { Link } from "react-router-dom";
+import UsersContext from "../../../contexts/UsersContext";
 
 const StyledMain = styled.main`
     background-color: #191919;
@@ -89,11 +90,12 @@ const StyledMain = styled.main`
 const Question = () => {
 
     const {id} = useParams();
-    const [question, setQuestion] = useState({});
+    const [question, setQuestion] = useState('');
     const [answers, setAnswers] = useState([]);
     const navigate = useNavigate();
     const {setQuestions, QuestionsActionTypes} = useContext(ForumQuestionsContext);
-    const {setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext);
+    const {answer, setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext);
+    const {loggedInUser} = useContext(UsersContext);
 
     useEffect(() => {
         fetch(`http://localhost:8080/questions/${id}`)
@@ -119,17 +121,20 @@ const Question = () => {
                 <div className="likes2">
                     <h4>Likes: {question.likes}</h4>
                     <h4>Asked: {question.asked}</h4>
-                    <div className="buttons">
-                        <button
-                        onClick={() => navigate(`/questions/edit/question/${id}`)}
-                        >Edit</button>
-                        <button
-                        onClick={() => {
-                            setQuestions({type: QuestionsActionTypes.remove, id: id})
-                            navigate('/questions/allQuestions')
-                        }}
-                        >Delete</button>
-                    </div>
+                    {
+                        loggedInUser.id === question.userid &&
+                        <div className="buttons">
+                            <button
+                            onClick={() => navigate(`/questions/edit/question/${id}`)}
+                            >Edit</button>
+                            <button
+                            onClick={() => {
+                                setQuestions({type: QuestionsActionTypes.remove, id: id})
+                                navigate('/questions/allQuestions')
+                            }}
+                            >Delete</button>
+                        </div>
+                    }
                 </div>
                 <div className="answer">
                     <h2>Answers:</h2>
@@ -141,17 +146,20 @@ const Question = () => {
                                 <div className="likes">
                                     <h4>Likes: {answer.likes}</h4>
                                     <h4>Answered: {answer.answered}</h4>
-                                    <div className="buttons">
-                                        <button
-                                        onClick={() => navigate(`/questions/edit/answer/${id}`)}
-                                        >Edit</button>
-                                        <button
-                                            onClick={() => {
-                                                setAnswer({type: AnswersActionTypes.remove, id: id})
-                                                navigate('/questions/allQuestions')
-                                            }}
-                                        >Delete</button>
-                                    </div>
+                                    {
+                                        loggedInUser.id === answer.userId &&
+                                        <div className="buttons">
+                                            <button
+                                            onClick={() => navigate(`/questions/edit/answer/${id}`)}
+                                            >Edit</button>
+                                            <button
+                                                onClick={() => {
+                                                    setAnswer({type: AnswersActionTypes.remove, id: id})
+                                                    navigate('/questions/allQuestions')
+                                                }}
+                                            >Delete</button>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         ))}

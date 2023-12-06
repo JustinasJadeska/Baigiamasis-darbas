@@ -65,12 +65,6 @@
       "likes": 1,
       "modified": false,
       "asked": "2021-12-25"
-    },
-    {
-      "id": "258233d1-5c8e-454d-aa1b-cffdb1fdfa2a",
-      "topic": "About react",
-      "question": "What is react? And why so many people use it?",
-      "asked": "2023-12-04"
     }
   ],
   "answers": [
