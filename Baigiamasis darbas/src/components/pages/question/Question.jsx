@@ -122,7 +122,7 @@ const Question = () => {
                     <h4>Likes: {question.likes}</h4>
                     <h4>Asked: {question.asked}</h4>
                     {
-                        loggedInUser.id === question.userid &&
+                        loggedInUser && loggedInUser.id === question.userid &&
                         <div className="buttons">
                             <button
                             onClick={() => navigate(`/questions/edit/question/${id}`)}
@@ -147,7 +147,7 @@ const Question = () => {
                                     <h4>Likes: {answer.likes}</h4>
                                     <h4>Answered: {answer.answered}</h4>
                                     {
-                                        loggedInUser.id === answer.userId &&
+                                        loggedInUser && loggedInUser.id === answer.userId &&
                                         <div className="buttons">
                                             <button
                                             onClick={() => navigate(`/questions/edit/answer/${id}`)}

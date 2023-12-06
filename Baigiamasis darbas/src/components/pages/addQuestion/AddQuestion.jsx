@@ -6,6 +6,7 @@ import FormikInput from '../../UI/input/FormikInput';
 import { useContext } from 'react';
 import ForumQuestionsContext from '../../../contexts/QuestionsContext';
 import { Link, useNavigate } from 'react-router-dom';
+import UsersContext from '../../../contexts/UsersContext';
 
 const StyledMain = styled.main`
     display: flex;
@@ -70,6 +71,7 @@ const AddQuestion = () => {
 
     const {setQuestions, QuestionsActionTypes} = useContext(ForumQuestionsContext)
     const navigate = useNavigate();
+    const {loggedInUser} = useContext(UsersContext);
 
     const values = {
         topic: '',
@@ -99,6 +101,7 @@ const AddQuestion = () => {
         onSubmit: (values) => {
             const finalValues = {
                 id: uuid(),
+                userid: loggedInUser.id,
                 ...values
             }
             setQuestions({
