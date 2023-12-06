@@ -48,12 +48,12 @@ const reducer = (state, action) => {
 
 const ForumAnswersProvider = ({children}) => {
 
-    const [answers, setAnswers] = useReducer(reducer, [])
+    const [answer, setAnswer] = useReducer(reducer, [])
 
     useEffect(() => {
         fetch(`http://localhost:8080/answers`)
         .then(res => res.json())
-        .then(data => setAnswers({
+        .then(data => setAnswer({
             type: AnswersActionTypes.get_all,
             data: data
         })
@@ -63,8 +63,8 @@ const ForumAnswersProvider = ({children}) => {
     return (
         <ForumAnswersContext.Provider
             value={{
-                answers,
-                setAnswers,
+                answer,
+                setAnswer,
                 AnswersActionTypes
             }}
         >

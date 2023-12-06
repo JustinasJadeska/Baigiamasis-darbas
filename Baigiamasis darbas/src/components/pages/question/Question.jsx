@@ -120,7 +120,9 @@ const Question = () => {
                     <h4>Likes: {question.likes}</h4>
                     <h4>Asked: {question.asked}</h4>
                     <div className="buttons">
-                        <button>Edit</button>
+                        <button
+                        onClick={() => navigate(`/questions/edit/${id}`)}
+                        >Edit</button>
                         <button
                         onClick={() => {
                             setQuestions({type: QuestionsActionTypes.remove, id: id})
@@ -130,7 +132,7 @@ const Question = () => {
                     </div>
                 </div>
                 <div className="answer">
-                    <h2>Answer:</h2>
+                    <h2>Answers:</h2>
                         {answers.map((answer) => (
                             <div key={answer.id} className="answer2">
                                 <div>

@@ -65,6 +65,12 @@
       "likes": 1,
       "modified": false,
       "asked": "2021-12-25"
+    },
+    {
+      "id": "258233d1-5c8e-454d-aa1b-cffdb1fdfa2a",
+      "topic": "About react",
+      "question": "What is react? And why so many people use it?",
+      "asked": "2023-12-04"
     }
   ],
   "answers": [
@@ -87,7 +93,7 @@
       "answered": "2023-01-14"
     },
     {
-      "id": 2,
+      "id": 3,
       "questionId": 3,
       "userId": 1,
       "answer": "You cannot use any of the existing lifecycle methods (componentDidMount, componentDidUpdate, componentWillUnmount etc.) in a hook. They can only be used in class components. And with Hooks you can only use in functional components.",
@@ -96,7 +102,7 @@
       "answered": "2022-07-10"
     },
     {
-      "id": 2,
+      "id": 4,
       "questionId": 4,
       "userId": 1,
       "answer": "As the name implies, ReactDOM is the glue between React and the DOM. Often, you will only use it for one single thing: mounting with ReactDOM.render(). Another useful feature of ReactDOM is ReactDOM.findDOMNode() which you can use to gain direct access to a DOM element. (Something you should use sparingly in React apps, but it can be necessary.) If your app is 'isomorphic', you would also use ReactDOM.renderToString() in your back-end code.",
