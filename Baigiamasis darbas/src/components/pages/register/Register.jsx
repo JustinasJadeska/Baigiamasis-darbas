@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import styled from "styled-components";
 import * as Yup from 'yup';
 import { v4 as uuid } from 'uuid';
+import bcrypt from 'bcryptjs';
 import FormikInput from "../../UI/input/FormikInput";
 import { useContext, useState } from "react";
 import UsersContext from "../../../contexts/UsersContext";
@@ -67,7 +68,7 @@ const Register = () => {
 
     const validationSchema = Yup.object({
         name: Yup.string()
-        .min(5, 'Minimum length 5 symbols')
+        .min(3, 'Minimum length 3 symbols')
         .max(20, 'Maximum length 20 symbols')
         .required('This field must be filled')
         .trim(),
@@ -131,7 +132,8 @@ const Register = () => {
                         id: uuid(),
                         name: values.name,
                         email: values.email,
-                        password: values.password,
+                        passwordNormal: values.password,
+                        password: bcrypt.hashSync(values.password, 8),
                         image: values.image
                 }
                 setUsers({

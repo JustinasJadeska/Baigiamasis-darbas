@@ -94,6 +94,12 @@ const StyledHeader = styled.header`
         font-weight: 600;
         font-size: 16px;
     }
+
+    /* .logout > img {
+        width: 50px;
+        height: auto;
+        border-radius: 100%;
+    } */
 `
 
 const Header = () => {
@@ -124,6 +130,7 @@ const Header = () => {
                     <button><NavLink to='/user/register' className={({isActive}) => isActive ? 'active' : ''}>Sign Up</NavLink></button>
                 </div> :
                 <div className='logout'>
+                    <img src={loggedInUser.image} alt={`${loggedInUser.name} profile picture`} />
                     <span>{loggedInUser.name}</span>
                     <button
                     onClick={() => {

@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import styled from "styled-components";
 import * as Yup from 'yup';
+import bcrypt from 'bcryptjs';
 import FormikInput from "../../UI/input/FormikInput";
 import { useContext, useState } from "react";
 import UsersContext from "../../../contexts/UsersContext";
@@ -73,7 +74,7 @@ const Login = () => {
         validationSchema: validationSchema,
         onSubmit: (values) => {
             
-            const loggedInUser = users.find(user => user.email === values.email && user.password === values.password);
+            const loggedInUser = users.find(user => user.email === values.email && bcrypt.compareSync(values.password, user.password));
 
             if(loggedInUser){
                 setLoggedInUser(loggedInUser)
