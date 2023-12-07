@@ -53,10 +53,11 @@
     {
       "id": 1,
       "userid": 1,
-      "topic": "React Native and React",
+      "topic": "React and React Native",
       "question": "I have started to learn React out of curiosity and wanted to know the difference between React and React Native - though could not find a satisfactory answer using Google. React and React Native seems to have the same format. Do they have completely different syntax?",
       "likes": 2,
-      "modified": false,
+      "modified": true,
+      "modifiedDate": "2023-12-07T11:39:02.659Z",
       "asked": "2023-12-04"
     },
     {
@@ -66,6 +67,7 @@
       "question": "I have just started learning React, and Facebook helps in simplifying the initial setup by providing the following ready-made project. If I have to install the skeleton project I have to type npx create-react-app my-app in command-line. I  was wondering why does the Facebook in Github have npx create-react-app my-app rather than npm create-react-app my-app?",
       "likes": 1,
       "modified": false,
+      "modifiedDate": "",
       "asked": "2023-01-14"
     },
     {
@@ -75,6 +77,7 @@
       "question": "In the official docs of React it mentions - If you are familiar with React class lifecycle methods, you can think of useEffect Hook as componentDidMount, componentDidUpdate, and componentWillUnmount combined. My question is - how can we use the componentWillMount() lifecyle method in a hook?",
       "likes": 0,
       "modified": false,
+      "modifiedDate": "",
       "asked": "2022-07-08"
     },
     {
@@ -84,6 +87,7 @@
       "question": "I'm a bit new to react. I see we have to import two things to get started, React and ReactDOM, can anyone explain the difference. I'm reading through the React documentation, but it doesn't say.",
       "likes": 1,
       "modified": false,
+      "modifiedDate": "",
       "asked": "2021-12-25"
     }
   ],
@@ -92,9 +96,10 @@
       "id": 1,
       "questionId": 1,
       "userId": 2,
-      "answer": "ReactJS is a JavaScript library, supporting both front-end web and being run on a server, for building user interfaces and web applications. It follows the concept of reusable components. React Native is a mobile framework that makes use of the JavaScript engine available on the host, allowing you to build mobile applications for different platforms (iOS, Android, and Windows Mobile) in JavaScript that allows you to use ReactJS to build reusable components and and communicate with native components.",
+      "answer": "ReactJS is a JavaScript library, supporting both front-end web and being run on a server, for building user interfaces and web applications. It follows the concept of reusable components. React Native is a mobile framework that makes use of the JavaScript engine available on the host, allowing you to build mobile applications for different platforms (iOS, Android, and Windows Mobile) in JavaScript that allows you to use ReactJS to build reusable components and communicate with native components.",
       "likes": 3,
       "modified": false,
+      "modifiedDate": "",
       "answered": "2023-12-05"
     },
     {
@@ -104,6 +109,7 @@
       "answer": "npx is a npm package runner (x probably stands for eXecute). One common way to use npx is to download and run a package temporarily or for trials. create-react-app is an npm package that is expected to be run only once in a project's lifecycle. Hence, it is preferred to use npx to install and run it in a single step. As mentioned in the main page https://www.npmjs.com/package/npx, npx can run commands in the PATH or from node_modules/.bin by default.",
       "likes": 2,
       "modified": false,
+      "modifiedDate": "",
       "answered": "2023-01-14"
     },
     {
@@ -113,6 +119,7 @@
       "answer": "You cannot use any of the existing lifecycle methods (componentDidMount, componentDidUpdate, componentWillUnmount etc.) in a hook. They can only be used in class components. And with Hooks you can only use in functional components.",
       "likes": 2,
       "modified": false,
+      "modifiedDate": "",
       "answered": "2022-07-10"
     },
     {
@@ -121,7 +128,8 @@
       "userId": 1,
       "answer": "As the name implies, ReactDOM is the glue between React and the DOM. Often, you will only use it for one single thing: mounting with ReactDOM.render(). Another useful feature of ReactDOM is ReactDOM.findDOMNode() which you can use to gain direct access to a DOM element. (Something you should use sparingly in React apps, but it can be necessary.) If your app is 'isomorphic', you would also use ReactDOM.renderToString() in your back-end code.",
       "likes": 2,
-      "modified": false,
+      "modified": true,
+      "modifiedDate": "2023-12-07T11:46:32.267Z",
       "answered": "2022-01-01"
     }
   ]

@@ -5,6 +5,7 @@ import ForumQuestionsContext from "../../../contexts/QuestionsContext";
 import ForumAnswersContext from "../../../contexts/AnswersContext";
 import { Link } from "react-router-dom";
 import UsersContext from "../../../contexts/UsersContext";
+import AddAnswer from "../../UI/addAnswer/AddAnswer";
 
 const StyledMain = styled.main`
     background-color: #191919;
@@ -38,8 +39,26 @@ const StyledMain = styled.main`
         padding-bottom: 20px;
     }
 
-    .answer > h2 {
+    .answer > div > h2 {
         color: #ffdd00;
+    }
+
+    .addAnswer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .addAnswer > button {
+        background-color: #ffffff00;
+        border: none;
+        font-weight: 600;
+        color: #ffdd00;
+        cursor: pointer;
+    }
+
+    .addAnswer > button:hover {
+        text-decoration: underline;
     }
 
     .answer2 > div > p:nth-of-type(1) {
@@ -52,12 +71,14 @@ const StyledMain = styled.main`
         display: flex;
         align-items: center;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     .likes {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     .buttons > button {
@@ -96,17 +117,28 @@ const Question = () => {
     const {setQuestions, QuestionsActionTypes} = useContext(ForumQuestionsContext);
     const {answer, setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext);
     const {loggedInUser} = useContext(UsersContext);
+    const [showTextarea, setShowTexarea] = useState(false);
+    const [modifiedDate, setModifiedDate] = useState(null);
 
     useEffect(() => {
         fetch(`http://localhost:8080/questions/${id}`)
         .then(res => res.json())
-        .then(data => setQuestion(data))
+        .then(data => {
+            if (!data.topic) {
+                navigate('/');
+              }
+              setQuestion(data);
+              if (data.modified) {
+                const formattedDate = new Date(data.modified).toLocaleString();
+                setModifiedDate(formattedDate);
+              }
+        })
 
         fetch(`http://localhost:8080/answers`)
         .then(res => res.json())
         .then((data) => {
             const filteredAnswers = data.filter((answer) => answer.questionId === parseInt(id));
-            setAnswers(filteredAnswers);
+            setAnswer({ type: AnswersActionTypes.get_all, data: filteredAnswers })
             })
     }, [])
 
@@ -121,6 +153,7 @@ const Question = () => {
                 <div className="likes2">
                     <h4>Likes: {question.likes}</h4>
                     <h4>Asked: {question.asked}</h4>
+                    <h4>Modified: {question.modified ? new Date(question.modifiedDate).toLocaleString() : 'Not Modified'}</h4>
                     {
                         loggedInUser && loggedInUser.id === question.userid &&
                         <div className="buttons">
@@ -137,8 +170,16 @@ const Question = () => {
                     }
                 </div>
                 <div className="answer">
-                    <h2>Answers:</h2>
-                        {answers.map((answer) => (
+                    <div className="addAnswer">
+                        <h2>Answers:</h2>
+                        {
+                            loggedInUser && 
+                            <button
+                            onClick={() => {setShowTexarea(true)}}
+                            ><i className="bi bi-plus-lg"></i> Add your answer</button>
+                        }
+                    </div>
+                        {answer.map((answer) => (
                             <div key={answer.id} className="answer2">
                                 <div>
                                     <p>{answer.answer}</p>
@@ -146,6 +187,7 @@ const Question = () => {
                                 <div className="likes">
                                     <h4>Likes: {answer.likes}</h4>
                                     <h4>Answered: {answer.answered}</h4>
+                                    <h4>Modified: {answer.modified ? new Date(answer.modifiedDate).toLocaleString() : 'Not Modified'}</h4>
                                     {
                                         loggedInUser && loggedInUser.id === answer.userId &&
                                         <div className="buttons">
@@ -154,7 +196,7 @@ const Question = () => {
                                             >Edit</button>
                                             <button
                                                 onClick={() => {
-                                                    setAnswer({type: AnswersActionTypes.remove, id: id})
+                                                    setAnswer({type: AnswersActionTypes.delete, id: id})
                                                     navigate('/questions/allQuestions')
                                                 }}
                                             >Delete</button>
@@ -164,6 +206,7 @@ const Question = () => {
                             </div>
                         ))}
                 </div>
+                {showTextarea && <AddAnswer questionId={id}/>}
             </div>
         </StyledMain>
      );

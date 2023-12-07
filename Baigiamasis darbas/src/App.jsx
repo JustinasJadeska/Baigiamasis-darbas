@@ -17,7 +17,7 @@ function App() {
       <Header />
       <Routes>
         <Route index element={<Main />}/>
-        <Route path='questions'>
+        <Route path='/questions'>
           <Route path='allQuestions' element={<AllQuestions />}/>
           <Route path=':id' element={<Question />} />
           <Route path='addNew' element={<AddQuestion />} />
