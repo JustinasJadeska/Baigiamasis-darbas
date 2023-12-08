@@ -67,37 +67,37 @@ const StyledMain = styled.main`
 
 const EditAnswer = () => {
 
-    const {answer, setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext)
+    const {setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext)
     const navigate = useNavigate();
     const {id} = useParams();
+    console.log(id)
 
     const [formValues, setFormValues] = useState({
         answer: '',
-        answered: ''
     })
 
     useEffect(() => {
         fetch(`http://localhost:8080/answers/${id}`)
         .then(res => res.json())
-        .then( data => {
+        .then(data => {
             if(!data.answer){
                 navigate('/')
             }
+            console.log("Data from server:", data);
             setFormValues({
-                ...data
+                answer: data.answer,
+                questionId: data.questionId,
+                userId: data.userId,
+                likes: data.likes
             })
         })
-    }, [])
+    }, [id])
 
     const validationSchema = Yup.object({
         answer: Yup.string()
         .min(5, 'Minimum length 5 symbols ma friend')
         .required('This field must be filled')
         .trim(),
-        answered: Yup.date()
-        .required('Date must be provided')
-        .min(new Date(0).toISOString(), 'Date must be after 1970-01-01')
-        .max(new Date().toISOString(), 'Date must be before now')
     })
 
     return ( 
@@ -109,8 +109,9 @@ const EditAnswer = () => {
                     initialValues = {formValues}
                     validationSchema = {validationSchema}
                     onSubmit = {(values) => {
+                        console.log("Form values submitted:", values);
                         const finalValues = {
-                            ...values
+                            ...values,
                         }
                         finalValues.modified = true;
                         finalValues.modifiedDate = new Date().toISOString();

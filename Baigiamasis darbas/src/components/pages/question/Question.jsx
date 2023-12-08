@@ -163,7 +163,7 @@ const Question = () => {
                                 setQuestions({
                                     type: QuestionsActionTypes.remove, 
                                     id: id,
-                                    // answerId: answer.id
+                                    answerId: answer.id
                                 })
                                 navigate('/questions/allQuestions')
                             }}
@@ -197,11 +197,7 @@ const Question = () => {
                                                     <div className="buttons">
                                                         <button
                                                         onClick={() => {
-                                                            setAnswer({
-                                                                type: AnswersActionTypes.edit, 
-                                                                id: answer.id
-                                                            })
-                                                            navigate(`/questions/edit/answer/${id}`)
+                                                            navigate(`/questions/edit/answer/${answer.id}`)
                                                         }}
                                                         >Edit</button>
                                                         <button

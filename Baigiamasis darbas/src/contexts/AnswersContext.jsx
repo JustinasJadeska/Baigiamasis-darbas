@@ -33,13 +33,7 @@ const reducer = (state, action) => {
                 },
                 body: JSON.stringify(action.data)
             });
-            return state.map(el =>{
-                if(el.id.toString() === action.id.toString()){
-                    return {...action.data};
-                } else {
-                    return el;
-                }
-            })
+            return state.map(el => (el.id.toString() === action.id.toString() ? { ...el, ...action.data } : el));
         default:
             console.log('error, action types is not found', action.type)
             return state;
