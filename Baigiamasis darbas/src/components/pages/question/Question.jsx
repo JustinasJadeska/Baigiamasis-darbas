@@ -136,10 +136,9 @@ const Question = () => {
         fetch(`http://localhost:8080/questions/${id}/answers`)
         .then(res => res.json())
         .then((data) => {
-            const filteredAnswers = data.filter((answer) => answer.questionId === parseInt(id));
-            setAnswers({ type: AnswersActionTypes.get_all, data: filteredAnswers })
+            setAnswers(data.filter(answer => answer.questionId === id))
             })
-    }, [])
+    }, [id])
     
     return ( 
         <StyledMain>
@@ -161,7 +160,11 @@ const Question = () => {
                             >Edit</button>
                             <button
                             onClick={() => {
-                                setQuestions({type: QuestionsActionTypes.remove, id: id})
+                                setQuestions({
+                                    type: QuestionsActionTypes.remove, 
+                                    id: id,
+                                    answerId: answer.id
+                                })
                                 navigate('/questions/allQuestions')
                             }}
                             >Delete</button>
@@ -180,7 +183,7 @@ const Question = () => {
                     </div>
                         <div>
                             {
-                                    answer.filter(answer => answer.questionId === question.id).map(answer => (  
+                                    answer.filter(answer => answer.questionId === question.id || answer.questionId === id).map(answer => (  
                                         <div key={answer.id} className="answer2">
                                             <div>
                                                 <p>{answer.answer}</p>
@@ -194,13 +197,15 @@ const Question = () => {
                                                     <div className="buttons">
                                                         <button
                                                         onClick={() => {
-                                                            setAnswer({type: AnswersActionTypes.edit, id: id})
-                                                            navigate(`/questions/edit/answer/${id}`)
+                                                            navigate(`/questions/edit/answer/${answer.id}`)
                                                         }}
                                                         >Edit</button>
                                                         <button
                                                             onClick={() => {
-                                                                setAnswer({type: AnswersActionTypes.remove, id: id})
+                                                                setAnswer({
+                                                                    type: AnswersActionTypes.remove, 
+                                                                    id: answer.id
+                                                                })
                                                                 navigate('/questions/allQuestions')
                                                             }}
                                                         >Delete</button>

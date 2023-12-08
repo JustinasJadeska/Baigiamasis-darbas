@@ -67,42 +67,40 @@ const StyledMain = styled.main`
 
 const EditAnswer = () => {
 
-    const {answer, setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext)
+    const {setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext)
     const navigate = useNavigate();
     const {id} = useParams();
 
     const [formValues, setFormValues] = useState({
         answer: '',
-        answered: ''
     })
 
     useEffect(() => {
         fetch(`http://localhost:8080/answers/${id}`)
         .then(res => res.json())
-        .then( data => {
-            if(!data.answer){
+        .then(data => {
+            if(!data.answer || !data.id){
                 navigate('/')
             }
             setFormValues({
-                ...data
+                answer: data.answer,
+                questionId: data.questionId,
+                userId: data.userId,
+                likes: data.likes
             })
         })
-    }, [])
+    }, [id])
 
     const validationSchema = Yup.object({
         answer: Yup.string()
         .min(5, 'Minimum length 5 symbols ma friend')
         .required('This field must be filled')
         .trim(),
-        answered: Yup.date()
-        .required('Date must be provided')
-        .min(new Date(0).toISOString(), 'Date must be after 1970-01-01')
-        .max(new Date().toISOString(), 'Date must be before now')
     })
 
     return ( 
         <StyledMain>
-            <Link to={`/questions/${id}`}><button><i className="bi bi-arrow-left"></i> Go back</button></Link>
+            <Link to={`/questions/${formValues.questionId}`}><button><i className="bi bi-arrow-left"></i> Go back</button></Link>
             <h1>Edit Answer</h1>
                 {
                     formValues.answer && <Formik
@@ -110,7 +108,7 @@ const EditAnswer = () => {
                     validationSchema = {validationSchema}
                     onSubmit = {(values) => {
                         const finalValues = {
-                            ...values
+                            ...values,
                         }
                         finalValues.modified = true;
                         finalValues.modifiedDate = new Date().toISOString();
@@ -119,29 +117,18 @@ const EditAnswer = () => {
                             id: id,
                             data: finalValues
                         });
-                        navigate(`/questions/allQuestions`) 
+                        navigate(`/questions/${formValues.questionId}`) 
                     }}
                     >
                         {(props) => (
                         <form onSubmit={props.handleSubmit}>
-                            {/* <FormikInput 
-                                type='text'
-                                name='topic'
-                                formik={props}
-                                placeholder='Enter question topic'
-                            /> */}
                             <FormikInput 
                                 type='textarea'
                                 name='answer'
                                 formik={props}
                                 placeholder='Enter your answer'
-                                rows={5}
-                                cols={22}
-                            />
-                            <FormikInput 
-                                type='date'
-                                name='answered'
-                                formik={props}
+                                rows={10}
+                                cols={60}
                             />
                             <input type="submit" value="Edit" />
                         </form>

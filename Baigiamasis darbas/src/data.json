@@ -53,11 +53,11 @@
     {
       "id": 1,
       "userid": 1,
-      "topic": "React Native and React",
-      "question": "I have started to learn React out of curiosity and wanted to know the difference between React and React Native - though could not find a satisfactory answer using Google. React and React Native seems to have the same format. Do they have completely different syntax?",
+      "topic": "React Native and React and",
+      "question": "I have started to learn React out of curiosity and wanted to know the difference between React and React Native - though could not find a satisfactory answer using Google. React and React Native seems to have the same format. Do they have completely different syntax???",
       "likes": 2,
       "modified": true,
-      "modifiedDate": "2023-12-08T09:44:06.589Z",
+      "modifiedDate": "2023-12-08T16:27:16.638Z",
       "asked": "2023-12-04"
     },
     {
@@ -96,6 +96,16 @@
       "topic": "What is react?",
       "question": "What is react and how does it work?",
       "asked": "2023-12-07"
+    },
+    {
+      "id": "c7a108cf-9cc1-490a-8508-66c4829a9ba2",
+      "userid": 2,
+      "topic": "About React",
+      "question": "How does react work?",
+      "asked": "2023-12-08",
+      "likes": 0,
+      "modified": true,
+      "modifiedDate": "2023-12-08T10:10:20.967Z"
     }
   ],
   "answers": [
@@ -105,8 +115,8 @@
       "userId": 2,
       "answer": "ReactJS is a JavaScript library, supporting both front-end web and being run on a server, for building user interfaces and web applications. It follows the concept of reusable components. React Native is a mobile framework that makes use of the JavaScript engine available on the host, allowing you to build mobile applications for different platforms (iOS, Android, and Windows Mobile) in JavaScript that allows you to use ReactJS to build reusable components and communicate with native components.",
       "likes": 3,
-      "modified": false,
-      "modifiedDate": "",
+      "modified": true,
+      "modifiedDate": "2023-12-08T13:14:52.404Z",
       "answered": "2023-12-05"
     },
     {
@@ -120,24 +130,21 @@
       "answered": "2023-01-14"
     },
     {
-      "id": 3,
+      "answer": "You cannot use any of the existing lifecycle methods (componentDidMount, componentDidUpdate, componentWillUnmount etc.) in a hook. They can only be used in class components. And with Hooks you can only use in functional components.",
       "questionId": 3,
       "userId": 1,
-      "answer": "You cannot use any of the existing lifecycle methods (componentDidMount, componentDidUpdate, componentWillUnmount etc.) in a hook. They can only be used in class components. And with Hooks you can only use in functional components.",
-      "likes": 2,
-      "modified": false,
-      "modifiedDate": "",
-      "answered": "2022-07-10"
-    },
-    {
-      "id": 4,
-      "questionId": 4,
-      "userId": 1,
-      "answer": "As the name implies, ReactDOM is the glue between React and the DOM. Often, you will only use it for one single thing: mounting with ReactDOM.render(). Another useful feature of ReactDOM is ReactDOM.findDOMNode() which you can use to gain direct access to a DOM element. (Something you should use sparingly in React apps, but it can be necessary.) If your app is 'isomorphic', you would also use ReactDOM.renderToString() in your back-end code.",
       "likes": 2,
       "modified": true,
-      "modifiedDate": "2023-12-07T11:46:32.267Z",
-      "answered": "2022-01-01"
+      "modifiedDate": "2023-12-08T16:26:20.905Z",
+      "id": 3
+    },
+    {
+      "answer": "As the name implies, ReactDOM is the glue between React and the DOM. Often, you will only use it for one single thing: mounting with ReactDOM.render(). Another useful feature of ReactDOM is ReactDOM.findDOMNode() which you can use to gain direct access to a DOM element. (Something you should use sparingly in React apps, but it can be necessary.) If your app is 'isomorphic', you would also use ReactDOM.renderToString() in your back-end code.",
+      "questionId": 4,
+      "userId": 1,
+      "modified": true,
+      "modifiedDate": "2023-12-08T14:46:40.846Z",
+      "id": 4
     },
     {
       "id": "be0a6aef-1081-441c-8b66-6519e3c426f4",
@@ -147,6 +154,24 @@
       "likes": 0,
       "modified": false,
       "answered": "2023-12-07T15:17:23.827Z"
+    },
+    {
+      "id": "3ee8442c-e08d-43ab-bd29-50afa38453cb",
+      "questionId": "1",
+      "userId": 3,
+      "answer": "Here's what you need to know",
+      "likes": 0,
+      "modified": false,
+      "answered": "2023-12-08T12:08:53.373Z"
+    },
+    {
+      "answer": "I can help you.",
+      "questionId": "c7a108cf-9cc1-490a-8508-66c4829a9ba2",
+      "userId": 1,
+      "likes": 0,
+      "modified": true,
+      "modifiedDate": "2023-12-08T16:25:17.288Z",
+      "id": "82d5b6b0-d206-4c9b-bc0a-e68ac3f7edce"
     }
   ]
 }

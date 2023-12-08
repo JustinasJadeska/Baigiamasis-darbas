@@ -73,8 +73,7 @@ const EditQuestion = () => {
 
     const [formValues, setFormValues] = useState({
         topic: '',
-        question: '',
-        asked: ''
+        question: ''
     })
 
     useEffect(() => {
@@ -99,11 +98,7 @@ const EditQuestion = () => {
         question: Yup.string()
         .min(5, 'Minimum length 5 symbols ma friend')
         .required('This field must be filled')
-        .trim(),
-        asked: Yup.date()
-        .required('Date must be provided')
-        .min(new Date(0).toISOString(), 'Date must be after 1970-01-01')
-        .max(new Date().toISOString(), 'Date must be before now')
+        .trim()
     })
 
     return ( 
@@ -143,11 +138,6 @@ const EditQuestion = () => {
                                 placeholder='Enter your question'
                                 rows={5}
                                 cols={22}
-                            />
-                            <FormikInput 
-                                type='date'
-                                name='asked'
-                                formik={props}
                             />
                             <input type="submit" value="Edit" />
                         </form>
