@@ -124,24 +124,13 @@ const EditAnswer = () => {
                     >
                         {(props) => (
                         <form onSubmit={props.handleSubmit}>
-                            {/* <FormikInput 
-                                type='text'
-                                name='topic'
-                                formik={props}
-                                placeholder='Enter question topic'
-                            /> */}
                             <FormikInput 
                                 type='textarea'
                                 name='answer'
                                 formik={props}
                                 placeholder='Enter your answer'
-                                rows={5}
-                                cols={22}
-                            />
-                            <FormikInput 
-                                type='date'
-                                name='answered'
-                                formik={props}
+                                rows={10}
+                                cols={60}
                             />
                             <input type="submit" value="Edit" />
                         </form>

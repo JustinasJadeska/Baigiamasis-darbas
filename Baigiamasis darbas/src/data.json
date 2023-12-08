@@ -54,10 +54,10 @@
       "id": 1,
       "userid": 1,
       "topic": "React Native and React",
-      "question": "I have started to learn React out of curiosity and wanted to know the difference between React and React Native - though could not find a satisfactory answer using Google. React and React Native seems to have the same format. Do they have completely different syntax?",
+      "question": "I have started to learn React out of curiosity and wanted to know the difference between React and React Native - though could not find a satisfactory answer using Google. React and React Native seems to have the same format. Do they have completely different syntax???",
       "likes": 2,
       "modified": true,
-      "modifiedDate": "2023-12-08T09:44:06.589Z",
+      "modifiedDate": "2023-12-08T12:27:59.788Z",
       "asked": "2023-12-04"
     },
     {
@@ -96,6 +96,16 @@
       "topic": "What is react?",
       "question": "What is react and how does it work?",
       "asked": "2023-12-07"
+    },
+    {
+      "id": "c7a108cf-9cc1-490a-8508-66c4829a9ba2",
+      "userid": 2,
+      "topic": "About React",
+      "question": "How does react work?",
+      "asked": "2023-12-08",
+      "likes": 0,
+      "modified": true,
+      "modifiedDate": "2023-12-08T10:10:20.967Z"
     }
   ],
   "answers": [
@@ -105,8 +115,8 @@
       "userId": 2,
       "answer": "ReactJS is a JavaScript library, supporting both front-end web and being run on a server, for building user interfaces and web applications. It follows the concept of reusable components. React Native is a mobile framework that makes use of the JavaScript engine available on the host, allowing you to build mobile applications for different platforms (iOS, Android, and Windows Mobile) in JavaScript that allows you to use ReactJS to build reusable components and communicate with native components.",
       "likes": 3,
-      "modified": false,
-      "modifiedDate": "",
+      "modified": true,
+      "modifiedDate": "2023-12-08T12:49:49.098Z",
       "answered": "2023-12-05"
     },
     {
@@ -147,6 +157,24 @@
       "likes": 0,
       "modified": false,
       "answered": "2023-12-07T15:17:23.827Z"
+    },
+    {
+      "id": "8632372c-8b62-40a6-8217-4e78a02fe0cc",
+      "questionId": "4",
+      "userId": 2,
+      "answer": "I agree...",
+      "likes": 0,
+      "modified": false,
+      "answered": "2023-12-08T09:58:31.035Z"
+    },
+    {
+      "id": "3ee8442c-e08d-43ab-bd29-50afa38453cb",
+      "questionId": "1",
+      "userId": 3,
+      "answer": "Here's what you need to know",
+      "likes": 0,
+      "modified": false,
+      "answered": "2023-12-08T12:08:53.373Z"
     }
   ]
 }

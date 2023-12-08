@@ -24,7 +24,7 @@ function App() {
           <Route path='addNew' element={<AddQuestion />} />
           <Route path='edit/question/:id' element={<EditQuestion />} />
           <Route path='edit/answer/:id' element={<EditAnswer />} />
-          <Route path='addAnswer/:id' element={<AddAnswer />} />
+          {/* <Route path='addAnswer/:id' element={<AddAnswer />} /> */}
         </Route>
         <Route path='/user'>
           <Route path='login' element={<Login />}/>
