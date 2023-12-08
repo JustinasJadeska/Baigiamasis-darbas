@@ -70,7 +70,6 @@ const EditAnswer = () => {
     const {setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext)
     const navigate = useNavigate();
     const {id} = useParams();
-    console.log(id)
 
     const [formValues, setFormValues] = useState({
         answer: '',
@@ -80,10 +79,9 @@ const EditAnswer = () => {
         fetch(`http://localhost:8080/answers/${id}`)
         .then(res => res.json())
         .then(data => {
-            if(!data.answer){
+            if(!data.answer || !data.id){
                 navigate('/')
             }
-            console.log("Data from server:", data);
             setFormValues({
                 answer: data.answer,
                 questionId: data.questionId,
@@ -102,14 +100,13 @@ const EditAnswer = () => {
 
     return ( 
         <StyledMain>
-            <Link to={`/questions/${id}`}><button><i className="bi bi-arrow-left"></i> Go back</button></Link>
+            <Link to={`/questions/${formValues.questionId}`}><button><i className="bi bi-arrow-left"></i> Go back</button></Link>
             <h1>Edit Answer</h1>
                 {
                     formValues.answer && <Formik
                     initialValues = {formValues}
                     validationSchema = {validationSchema}
                     onSubmit = {(values) => {
-                        console.log("Form values submitted:", values);
                         const finalValues = {
                             ...values,
                         }
@@ -120,7 +117,7 @@ const EditAnswer = () => {
                             id: id,
                             data: finalValues
                         });
-                        navigate(`/questions/allQuestions`) 
+                        navigate(`/questions/${formValues.questionId}`) 
                     }}
                     >
                         {(props) => (
