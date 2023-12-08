@@ -6,6 +6,7 @@ import FormikInput from '../../UI/input/FormikInput';
 import { useContext } from 'react';
 import ForumQuestionsContext from '../../../contexts/QuestionsContext';
 import { Link, useNavigate } from 'react-router-dom';
+import UsersContext from '../../../contexts/UsersContext';
 
 const StyledMain = styled.main`
     display: flex;
@@ -70,6 +71,7 @@ const AddQuestion = () => {
 
     const {setQuestions, QuestionsActionTypes} = useContext(ForumQuestionsContext)
     const navigate = useNavigate();
+    const {loggedInUser} = useContext(UsersContext);
 
     const values = {
         topic: '',
@@ -80,7 +82,6 @@ const AddQuestion = () => {
     const validationSchema = Yup.object({
         topic: Yup.string()
         .min(5, 'Minimum length 5 symbols ma friend')
-        .max(50, 'Maximum length 50 symbols ma friend')
         .required('This field must be filled')
         .trim(),
         question: Yup.string()
@@ -99,7 +100,11 @@ const AddQuestion = () => {
         onSubmit: (values) => {
             const finalValues = {
                 id: uuid(),
-                ...values
+                userid: loggedInUser.id,
+                ...values,
+                likes: 0,
+                modified: false,
+                modifiedDate: new Date().toISOString()
             }
             setQuestions({
                 type: QuestionsActionTypes.add,

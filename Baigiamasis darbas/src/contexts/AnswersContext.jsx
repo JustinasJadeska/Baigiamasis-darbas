@@ -13,7 +13,7 @@ const reducer = (state, action) => {
     switch(action.type){
         case AnswersActionTypes.get_all :
             return action.data;
-        case AnswersActionTypes.add :
+        case AnswersActionTypes.add:
             fetch(`http://localhost:8080/answers`, {
                 method: "POST",
                 headers: {
@@ -48,17 +48,21 @@ const reducer = (state, action) => {
 
 const ForumAnswersProvider = ({children}) => {
 
-    const [answer, setAnswer] = useReducer(reducer, [])
+    const [answer, setAnswer] = useReducer(reducer, []);
 
     useEffect(() => {
         fetch(`http://localhost:8080/answers`)
-        .then(res => res.json())
-        .then(data => setAnswer({
-            type: AnswersActionTypes.get_all,
-            data: data
-        })
-        )
-    }, [])
+          .then(res => res.json())
+          .then(data => {
+            setAnswer({
+              type: AnswersActionTypes.get_all,
+              data: data
+            });
+          })
+          .catch(error => {
+            console.error('Error fetching initial data:', error);
+          });
+      }, []);
 
     return (
         <ForumAnswersContext.Provider

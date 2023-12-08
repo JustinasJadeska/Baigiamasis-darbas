@@ -67,7 +67,7 @@ const StyledMain = styled.main`
 
 const EditAnswer = () => {
 
-    const {setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext)
+    const {answer, setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext)
     const navigate = useNavigate();
     const {id} = useParams();
 
@@ -112,6 +112,8 @@ const EditAnswer = () => {
                         const finalValues = {
                             ...values
                         }
+                        finalValues.modified = true;
+                        finalValues.modifiedDate = new Date().toISOString();
                         setAnswer({
                             type: AnswersActionTypes.edit,
                             id: id,

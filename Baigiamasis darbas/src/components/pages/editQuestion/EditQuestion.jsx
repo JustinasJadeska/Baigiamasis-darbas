@@ -118,6 +118,8 @@ const EditQuestion = () => {
                         const finalValues = {
                             ...values
                         }
+                        finalValues.modified = true;
+                        finalValues.modifiedDate = new Date().toISOString();
                         setQuestions({
                             type: QuestionsActionTypes.edit,
                             id: id,
