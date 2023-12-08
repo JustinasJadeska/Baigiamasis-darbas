@@ -67,7 +67,7 @@ const StyledMain = styled.main`
 
 const EditAnswer = () => {
 
-    const {setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext)
+    const {answer, setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext)
     const navigate = useNavigate();
     const {id} = useParams();
 

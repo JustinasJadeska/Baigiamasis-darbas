@@ -53,11 +53,11 @@
     {
       "id": 1,
       "userid": 1,
-      "topic": "React and React Native",
+      "topic": "React Native and React",
       "question": "I have started to learn React out of curiosity and wanted to know the difference between React and React Native - though could not find a satisfactory answer using Google. React and React Native seems to have the same format. Do they have completely different syntax?",
       "likes": 2,
       "modified": true,
-      "modifiedDate": "2023-12-07T11:39:02.659Z",
+      "modifiedDate": "2023-12-08T09:44:06.589Z",
       "asked": "2023-12-04"
     },
     {
@@ -89,6 +89,13 @@
       "modified": false,
       "modifiedDate": "",
       "asked": "2021-12-25"
+    },
+    {
+      "id": "6222bf44-7de0-4a2e-8c7e-70db69991c1e",
+      "userid": 1,
+      "topic": "What is react?",
+      "question": "What is react and how does it work?",
+      "asked": "2023-12-07"
     }
   ],
   "answers": [
@@ -131,6 +138,15 @@
       "modified": true,
       "modifiedDate": "2023-12-07T11:46:32.267Z",
       "answered": "2022-01-01"
+    },
+    {
+      "id": "be0a6aef-1081-441c-8b66-6519e3c426f4",
+      "questionId": "6222bf44-7de0-4a2e-8c7e-70db69991c1e",
+      "userId": 3,
+      "answer": "I don't know, sorry...",
+      "likes": 0,
+      "modified": false,
+      "answered": "2023-12-07T15:17:23.827Z"
     }
   ]
 }

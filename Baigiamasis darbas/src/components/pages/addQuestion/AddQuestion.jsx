@@ -82,7 +82,6 @@ const AddQuestion = () => {
     const validationSchema = Yup.object({
         topic: Yup.string()
         .min(5, 'Minimum length 5 symbols ma friend')
-        .max(50, 'Maximum length 50 symbols ma friend')
         .required('This field must be filled')
         .trim(),
         question: Yup.string()
@@ -102,7 +101,10 @@ const AddQuestion = () => {
             const finalValues = {
                 id: uuid(),
                 userid: loggedInUser.id,
-                ...values
+                ...values,
+                likes: 0,
+                modified: false,
+                modifiedDate: new Date().toISOString()
             }
             setQuestions({
                 type: QuestionsActionTypes.add,

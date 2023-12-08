@@ -3,6 +3,7 @@ import {v4 as uuid} from 'uuid';
 import styled from "styled-components";
 import ForumAnswersContext from "../../../contexts/AnswersContext";
 import UsersContext from "../../../contexts/UsersContext";
+import { useParams } from "react-router-dom";
 
 const StyledAnswer = styled.div`
     display: flex;
@@ -34,31 +35,30 @@ const StyledAnswer = styled.div`
     }
 `
 
-const AddAnswer = ({questionId}) => {
+const AddAnswer = () => {
 
     const {setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext)
     const [answerText, setAnswerText] = useState('')
     const {loggedInUser} = useContext(UsersContext);
+    const {id} = useParams();
 
     const handleSubmit = () => {
-        if(answerText.trim() === ''){ // Make sure the answer text is not empty
+        if(answerText.trim() === ''){ 
             return;
         }
 
         const values = {
-            // id: uuid(),
-            questionId: questionId,
+            id: uuid(),
+            questionId: id,
             userId: loggedInUser.id,
             answer: answerText,
             likes: 0,
             modified: false,
             answered: new Date().toISOString()
         }
-
         setAnswer({type: AnswersActionTypes.add, data: values})
         setAnswerText('')
     }
-
 
     return ( 
         <StyledAnswer>

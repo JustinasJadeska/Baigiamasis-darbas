@@ -112,8 +112,8 @@ const Question = () => {
 
     const {id} = useParams();
     const [question, setQuestion] = useState('');
-    const [answers, setAnswers] = useState([]);
     const navigate = useNavigate();
+    const [answers, setAnswers] = useState([])
     const {setQuestions, QuestionsActionTypes} = useContext(ForumQuestionsContext);
     const {answer, setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext);
     const {loggedInUser} = useContext(UsersContext);
@@ -133,15 +133,14 @@ const Question = () => {
                 setModifiedDate(formattedDate);
               }
         })
-
-        fetch(`http://localhost:8080/answers`)
+        fetch(`http://localhost:8080/questions/${id}/answers`)
         .then(res => res.json())
         .then((data) => {
             const filteredAnswers = data.filter((answer) => answer.questionId === parseInt(id));
-            setAnswer({ type: AnswersActionTypes.get_all, data: filteredAnswers })
+            setAnswers({ type: AnswersActionTypes.get_all, data: filteredAnswers })
             })
     }, [])
-
+    
     return ( 
         <StyledMain>
             <Link to='/questions/allQuestions'><button><i className="bi bi-arrow-left"></i> Go back</button></Link>
@@ -179,34 +178,41 @@ const Question = () => {
                             ><i className="bi bi-plus-lg"></i> Add your answer</button>
                         }
                     </div>
-                        {answer.map((answer) => (
-                            <div key={answer.id} className="answer2">
-                                <div>
-                                    <p>{answer.answer}</p>
-                                </div>
-                                <div className="likes">
-                                    <h4>Likes: {answer.likes}</h4>
-                                    <h4>Answered: {answer.answered}</h4>
-                                    <h4>Modified: {answer.modified ? new Date(answer.modifiedDate).toLocaleString() : 'Not Modified'}</h4>
-                                    {
-                                        loggedInUser && loggedInUser.id === answer.userId &&
-                                        <div className="buttons">
-                                            <button
-                                            onClick={() => navigate(`/questions/edit/answer/${id}`)}
-                                            >Edit</button>
-                                            <button
-                                                onClick={() => {
-                                                    setAnswer({type: AnswersActionTypes.delete, id: id})
-                                                    navigate('/questions/allQuestions')
-                                                }}
-                                            >Delete</button>
+                        <div>
+                            {
+                                    answer.filter(answer => answer.questionId === question.id).map(answer => (  
+                                        <div key={answer.id} className="answer2">
+                                            <div>
+                                                <p>{answer.answer}</p>
+                                            </div>
+                                            <div className="likes">
+                                                <h4>Likes: {answer.likes}</h4>
+                                                <h4>Answered: {answer.answered}</h4>
+                                                <h4>Modified: {answer.modified ? new Date(answer.modifiedDate).toLocaleString() : 'Not Modified'}</h4>
+                                                {
+                                                    loggedInUser && loggedInUser.id === answer.userId &&
+                                                    <div className="buttons">
+                                                        <button
+                                                        onClick={() => {
+                                                            setAnswer({type: AnswersActionTypes.edit, id: id})
+                                                            navigate(`/questions/edit/answer/${id}`)
+                                                        }}
+                                                        >Edit</button>
+                                                        <button
+                                                            onClick={() => {
+                                                                setAnswer({type: AnswersActionTypes.remove, id: id})
+                                                                navigate('/questions/allQuestions')
+                                                            }}
+                                                        >Delete</button>
+                                                    </div>
+                                                }
+                                            </div>
                                         </div>
-                                    }
-                                </div>
-                            </div>
-                        ))}
+                                    ))
+                            }
+                        </div>
                 </div>
-                {showTextarea && <AddAnswer questionId={id}/>}
+                {showTextarea && <AddAnswer questionId={id} />}
             </div>
         </StyledMain>
      );
