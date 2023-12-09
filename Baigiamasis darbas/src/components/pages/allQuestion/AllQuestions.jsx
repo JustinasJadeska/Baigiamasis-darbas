@@ -90,7 +90,6 @@ const AllQuestions = () => {
     }, []);
 
     const handleSort = (sortedQuestions) => {
-        // Handle the sorted questions in the parent component
         setSortedQuestions(sortedQuestions);
     };
 
@@ -113,11 +112,7 @@ const AllQuestions = () => {
             {
                 loggedInUser && <Link to='/questions/addNew'><button>Ask Question</button></Link>
             }
-            <SortQuestions
-                questions={questions}
-                onSort={handleSort}
-                sortedQuestions={sortedQuestions}
-            />
+            
             <div className="filter-buttons">
                 <button onClick={() => setFilterType('all')} className={filterType === 'all' ? 'active' : ''}>
                     All
@@ -135,7 +130,11 @@ const AllQuestions = () => {
                     Unanswered
                 </button>
             </div>
-            <h1>Questions</h1>
+            <h1>Questions <SortQuestions
+                questions={questions}
+                onSort={handleSort}
+                sortedQuestions={sortedQuestions}
+            /></h1>
             <div>
                 {
                     filteredQuestions().map(question => {

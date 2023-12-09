@@ -95,11 +95,6 @@ const StyledHeader = styled.header`
         font-size: 16px;
     }
 
-    /* .logout > img {
-        width: 50px;
-        height: auto;
-        border-radius: 100%;
-    } */
 `
 
 const Header = () => {

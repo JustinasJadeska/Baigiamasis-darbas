@@ -8,9 +8,6 @@ const StyledButton = styled.div`
     justify-content: center;
 
     > button {
-        position: absolute;
-        top: 50px;
-        right: 20px;
         font-size: 16px;
         cursor: pointer;
         border: none;
@@ -36,30 +33,25 @@ const SortQuestions = ({onSort}) => {
     const [sortOrder, setSortOrder] = useState("asc");
 
     useEffect(() => {
-        fetch(`http://localhost:8080/questions`)
-        .then((res) => res.json())
-        .then((data) => {
-                setQuestions(data);
-            })
-            .catch((error) => {
-                console.error("Error fetching answers:", error);
+        fetch("http://localhost:8080/questions")
+          .then((res) => res.json())
+          .then((data) => {
+            const sortedQuestions = [...data].sort((a, b) => {
+              const dateA = new Date(a.asked);
+              const dateB = new Date(b.asked);
+              return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
             });
-    }, []);
-
-    const handleSort = () => {
-        const sortedQuestions = [...questions];
-
-        sortedQuestions.sort((a, b) => {
-            const dateA = new Date(a.asked);
-            const dateB = new Date(b.asked);
-
-            return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
-        });
-
-        setQuestions(sortedQuestions);
+            setQuestions(sortedQuestions);
+            onSort(sortedQuestions);
+          })
+          .catch((error) => {
+            console.error("Error fetching or sorting questions:", error);
+          });
+      }, [onSort, sortOrder]);
+    
+      const handleSort = () => {
         setSortOrder(sortOrder === "asc" ? "desc" : "asc");
-        onSort(sortedQuestions);
-    };
+      };
 
     return ( 
         <StyledButton>
