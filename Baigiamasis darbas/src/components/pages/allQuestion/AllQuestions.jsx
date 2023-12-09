@@ -4,6 +4,7 @@ import styled from "styled-components";
 import QuestionCard from "../questionCard/QuestionCard";
 import ForumQuestionsContext from "../../../contexts/QuestionsContext";
 import UsersContext from "../../../contexts/UsersContext";
+import SortQuestions from "../../UI/sortQuestions/SortQuestions";
 
 const StyledQuestions = styled.div`
     min-height: 100vh;
@@ -71,10 +72,11 @@ const StyledQuestions = styled.div`
 `
 const AllQuestions = () => {
 
-    const {questions} = useContext(ForumQuestionsContext);
+    const {questions, setQuestions} = useContext(ForumQuestionsContext);
     const {loggedInUser} = useContext(UsersContext);
     const [filterType, setFilterType] = useState('all');
     const [allAnswers, setAllAnswers] = useState([]);
+    const [sortedQuestions, setSortedQuestions] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:8080/answers`)
@@ -87,13 +89,22 @@ const AllQuestions = () => {
             });
     }, []);
 
+    const handleSort = (sortedQuestions) => {
+        // Handle the sorted questions in the parent component
+        setSortedQuestions(sortedQuestions);
+    };
+
     const filteredQuestions = () => {
         if (filterType === 'answered') {
-            return questions.filter((question) => allAnswers.some((answer) => answer.questionId === question.id));
+            return sortedQuestions.filter((question) =>
+                allAnswers.some((answer) => answer.questionId === question.id)
+            );
         } else if (filterType === 'unanswered') {
-            return questions.filter((question) => !allAnswers.some((answer) => answer.questionId === question.id));
+            return sortedQuestions.filter((question) =>
+                !allAnswers.some((answer) => answer.questionId === question.id)
+            );
         } else {
-            return questions;
+            return sortedQuestions;
         }
     };
 
@@ -102,6 +113,11 @@ const AllQuestions = () => {
             {
                 loggedInUser && <Link to='/questions/addNew'><button>Ask Question</button></Link>
             }
+            <SortQuestions
+                questions={questions}
+                onSort={handleSort}
+                sortedQuestions={sortedQuestions}
+            />
             <div className="filter-buttons">
                 <button onClick={() => setFilterType('all')} className={filterType === 'all' ? 'active' : ''}>
                     All
