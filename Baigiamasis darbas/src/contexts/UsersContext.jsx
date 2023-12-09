@@ -50,7 +50,7 @@ const UsersProvider = ({children}) => {
 
     const [users, setUsers] = useReducer(reducer, []);
     const [loggedInUser, setLoggedInUser] = useState('');
-
+   
     useEffect(() => {
         fetch(`http://localhost:8080/users`)
         .then(res => res.json())

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import QuestionCard from "../questionCard/QuestionCard";
@@ -6,6 +6,7 @@ import ForumQuestionsContext from "../../../contexts/QuestionsContext";
 import UsersContext from "../../../contexts/UsersContext";
 
 const StyledQuestions = styled.div`
+    min-height: 100vh;
     position: relative;
     background-color: #191919;
     color: white;
@@ -27,7 +28,6 @@ const StyledQuestions = styled.div`
         position: absolute;
         top: 20px;
         right: 20px;
-        /* padding: 10px 20px; */
         font-weight: 600;
         cursor: pointer;
         border: none;
@@ -37,22 +37,92 @@ const StyledQuestions = styled.div`
         background-color: #ffffff00;
     }
 
-`
+    > a > button:hover {
+        text-decoration: underline;
+    }
 
+    .filter-buttons {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start; 
+        flex-wrap: wrap;
+        padding-top: 20px;
+        padding-left: 20px;
+        flex-direction: row; 
+    }
+
+    .filter-buttons  button {
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        color: #ae00ff;
+        background-color: #ffffff00;
+        font-weight: 600;
+    }
+
+    .filter-buttons  button:hover {
+        text-decoration: underline;
+    }
+
+    .filter-buttons button.active {
+        background-color: #ae00ff42;
+    }
+`
 const AllQuestions = () => {
 
     const {questions} = useContext(ForumQuestionsContext);
     const {loggedInUser} = useContext(UsersContext);
+    const [filterType, setFilterType] = useState('all');
+    const [allAnswers, setAllAnswers] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:8080/answers`)
+        .then((res) => res.json())
+        .then((data) => {
+                setAllAnswers(data);
+            })
+            .catch((error) => {
+                console.error("Error fetching answers:", error);
+            });
+    }, []);
+
+    const filteredQuestions = () => {
+        if (filterType === 'answered') {
+            return questions.filter((question) => allAnswers.some((answer) => answer.questionId === question.id));
+        } else if (filterType === 'unanswered') {
+            return questions.filter((question) => !allAnswers.some((answer) => answer.questionId === question.id));
+        } else {
+            return questions;
+        }
+    };
 
     return ( 
         <StyledQuestions>
             {
                 loggedInUser && <Link to='/questions/addNew'><button>Ask Question</button></Link>
             }
-            <h1>All questions</h1>
+            <div className="filter-buttons">
+                <button onClick={() => setFilterType('all')} className={filterType === 'all' ? 'active' : ''}>
+                    All
+                </button>
+                <button
+                    onClick={() => setFilterType('answered')}
+                    className={filterType === 'answered' ? 'active' : ''}
+                >
+                    Answered
+                </button>
+                <button
+                    onClick={() => setFilterType('unanswered')}
+                    className={filterType === 'unanswered' ? 'active' : ''}
+                >
+                    Unanswered
+                </button>
+            </div>
+            <h1>Questions</h1>
             <div>
                 {
-                    questions.map(question => {
+                    filteredQuestions().map(question => {
                         return <QuestionCard 
                             key={question.id}
                             data={question}

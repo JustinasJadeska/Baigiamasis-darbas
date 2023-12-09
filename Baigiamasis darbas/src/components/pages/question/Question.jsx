@@ -6,6 +6,7 @@ import ForumAnswersContext from "../../../contexts/AnswersContext";
 import { Link } from "react-router-dom";
 import UsersContext from "../../../contexts/UsersContext";
 import AddAnswer from "../../UI/addAnswer/AddAnswer";
+import { UsersProvider } from "../../../contexts/UsersContext";
 
 const StyledMain = styled.main`
     background-color: #191919;
@@ -114,7 +115,7 @@ const Question = () => {
     const [question, setQuestion] = useState('');
     const navigate = useNavigate();
     const [answers, setAnswers] = useState([])
-    const {setQuestions, QuestionsActionTypes} = useContext(ForumQuestionsContext);
+    const {questions, setQuestions, QuestionsActionTypes} = useContext(ForumQuestionsContext);
     const {answer, setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext);
     const {loggedInUser} = useContext(UsersContext);
     const [showTextarea, setShowTexarea] = useState(false);
@@ -149,7 +150,7 @@ const Question = () => {
                     <p>{question.question}</p>
                 </div>
                 <div className="likes2">
-                    <h4>Likes: {question.likes}</h4>
+                    <h4>Likes: <button>-</button> {question.likes} <button>+</button></h4>
                     <h4>Asked: {question.asked}</h4>
                     <h4>Modified: {question.modified ? new Date(question.modifiedDate).toLocaleString() : 'Not Modified'}</h4>
                     {
@@ -183,39 +184,39 @@ const Question = () => {
                     </div>
                         <div>
                             {
-                                    answer.filter(answer => answer.questionId === question.id || answer.questionId === id).map(answer => (  
-                                        <div key={answer.id} className="answer2">
-                                            <div>
-                                                <p>{answer.answer}</p>
-                                            </div>
-                                            <div className="likes">
-                                                <h4>Likes: {answer.likes}</h4>
-                                                <h4>Answered: {answer.answered}</h4>
-                                                <h4>Modified: {answer.modified ? new Date(answer.modifiedDate).toLocaleString() : 'Not Modified'}</h4>
-                                                {
-                                                    loggedInUser && loggedInUser.id === answer.userId &&
-                                                    <div className="buttons">
-                                                        <button
-                                                        onClick={() => {
-                                                            navigate(`/questions/edit/answer/${answer.id}`)
-                                                        }}
-                                                        >Edit</button>
-                                                        <button
-                                                            onClick={() => {
-                                                                setAnswer({
-                                                                    type: AnswersActionTypes.remove, 
-                                                                    id: answer.id
-                                                                })
-                                                                navigate('/questions/allQuestions')
-                                                            }}
-                                                        >Delete</button>
-                                                    </div>
-                                                }
-                                            </div>
+                                answer.filter(answer => answer.questionId === question.id || answer.questionId === id).map(answer => (  
+                                    <div key={answer.id} className="answer2">
+                                        <div>
+                                            <p>{answer.answer}</p>
                                         </div>
-                                    ))
+                                        <div className="likes">
+                                            <h4>Likes: <button>-</button> {answer.likes} <button>+</button></h4>
+                                            <h4>Answered: {answer.answered}</h4>
+                                            <h4>Modified: {answer.modified ? new Date(answer.modifiedDate).toLocaleString() : 'Not Modified'}</h4>
+                                            {
+                                                loggedInUser && loggedInUser.id === answer.userId &&
+                                                <div className="buttons">
+                                                    <button
+                                                     onClick={() => {
+                                                        navigate(`/questions/edit/answer/${answer.id}`)
+                                                    }}
+                                                    >Edit</button>
+                                                    <button
+                                                        onClick={() => {
+                                                            setAnswer({
+                                                                type: AnswersActionTypes.remove, 
+                                                                id: answer.id
+                                                            })
+                                                            navigate('/questions/allQuestions')
+                                                        }}
+                                                    >Delete</button>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                ))
                             }
-                        </div>
+                    </div>
                 </div>
                 {showTextarea && <AddAnswer questionId={id} />}
             </div>

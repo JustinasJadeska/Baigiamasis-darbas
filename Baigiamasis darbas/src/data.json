@@ -47,6 +47,14 @@
       "passwordNormal": "Password1.",
       "password": "$2a$08$10urwFQQhFtCSlmwkwrC8.PsgUJ8WMTxSUhu3VsPhNCjgAbB/EAcu",
       "image": "https://images.pexels.com/photos/842980/pexels-photo-842980.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    },
+    {
+      "id": "d3fb28fb-90c4-4114-972e-1dd0a19fdb41",
+      "name": "Username12",
+      "email": "username12@gmail.com",
+      "passwordNormal": "Password123.",
+      "password": "$2a$08$yy2zhQDklv6VGNm456GEK.ojllmosDsDZzFkAgDWMjiK5uccUc4Mi",
+      "image": "https://images.pexels.com/photos/842980/pexels-photo-842980.jpeg?auto=compress&cs=tinysrgb&w=1200"
     }
   ],
   "questions": [
@@ -141,6 +149,7 @@
     {
       "answer": "As the name implies, ReactDOM is the glue between React and the DOM. Often, you will only use it for one single thing: mounting with ReactDOM.render(). Another useful feature of ReactDOM is ReactDOM.findDOMNode() which you can use to gain direct access to a DOM element. (Something you should use sparingly in React apps, but it can be necessary.) If your app is 'isomorphic', you would also use ReactDOM.renderToString() in your back-end code.",
       "questionId": 4,
+      "likes": 1,
       "userId": 1,
       "modified": true,
       "modifiedDate": "2023-12-08T14:46:40.846Z",

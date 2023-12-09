@@ -6,7 +6,9 @@ const QuestionsActionTypes = {
     get_all: 'get all questions',
     add: 'add questions',
     remove: 'remove questions',
-    edit: 'edit questions'
+    edit: 'edit questions',
+    likeQuestion: 'like question',
+    unlikeQuestion: 'unlike question'
 }
 
 const reducer = (state, action) => {
