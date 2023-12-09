@@ -4,7 +4,7 @@ import styled from "styled-components";
 const StyledButton = styled.div`
     position: relative;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
 
     > button {

@@ -15,7 +15,7 @@ const StyledQuestions = styled.div`
     > h1 {
         margin: 0;
         text-align: center;
-        padding: 20px 0;
+        padding: 20px 0 20px 0;
     }
 
     > div {
@@ -130,11 +130,12 @@ const AllQuestions = () => {
                     Unanswered
                 </button>
             </div>
-            <h1>Questions <SortQuestions
+            <h1>Questions</h1>
+            <SortQuestions
                 questions={questions}
                 onSort={handleSort}
                 sortedQuestions={sortedQuestions}
-            /></h1>
+            />
             <div>
                 {
                     filteredQuestions().map(question => {
