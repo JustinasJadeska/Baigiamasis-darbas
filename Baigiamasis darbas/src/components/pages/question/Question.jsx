@@ -121,7 +121,6 @@ const Question = () => {
     const [showTextarea, setShowTexarea] = useState(false);
     const [modifiedDate, setModifiedDate] = useState(null);
     const [likes, setLikes] = useState('')
-    const [answerLikes, setAnswerLikes] = useState('')
 
     useEffect(() => {
         fetch(`http://localhost:8080/questions/${id}`)
@@ -144,42 +143,50 @@ const Question = () => {
     }, [id])
 
     const handleLike = () => {
-        const likeCount = question.likes + 1;
-        setLikes(likeCount);
-        fetch(`http://localhost:8080/questions/${question.id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify({likes: likeCount}),
-        });
-        setQuestion((prevQuestion) => ({
-            ...prevQuestion,
-            likes: likeCount
+        if(loggedInUser){
+            const likeCount = question.likes + 1;
+            setLikes(likeCount);
+            fetch(`http://localhost:8080/questions/${question.id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify({likes: likeCount}),
+            });
+            setQuestion((prevQuestion) => ({
+                ...prevQuestion,
+                likes: likeCount
         }))
+        } else {
+            console.log('User is not logged in');
+        } 
     }
 
     const handleDislike = () => {
-        const likeCount = question.likes - 1;
-        setLikes(likeCount);
-        fetch(`http://localhost:8080/questions/${question.id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify({likes: likeCount}),
-        });
-        setQuestion((prevQuestion) => ({
-            ...prevQuestion,
-            likes: likeCount
-        }))
+        if(loggedInUser) {
+            const likeCount = question.likes - 1;
+            setLikes(likeCount);
+            fetch(`http://localhost:8080/questions/${question.id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify({likes: likeCount}),
+            });
+            setQuestion((prevQuestion) => ({
+                ...prevQuestion,
+                likes: likeCount
+            }))
+        } else {
+            console.log('User is not logged in');
+        }
     }
 
     const handleLikeAnswer = (answerId) => {
-        const likedAnswer = answers.find((answer) => answer.id === answerId);
-    
+        if(loggedInUser){
+            const likedAnswer = answer.find((answer) => answer.id === answerId);
         if (likedAnswer) {
-            const likeCount = likedAnswer.likes + 1;
+            const likeCount = ++likedAnswer.likes;
     
             fetch(`http://localhost:8080/answers/${answerId}`, {
                 method: "PATCH",
@@ -190,7 +197,7 @@ const Question = () => {
             })
             .then(res => res.json())
             .then(updatedAnswer => {
-                setAnswer((prevAnswers) =>
+                setAnswers((prevAnswers) =>
                     prevAnswers.map((prevAnswer) =>
                         prevAnswer.id === answerId
                             ? { ...prevAnswer, likes: updatedAnswer.likes }
@@ -201,6 +208,38 @@ const Question = () => {
             .catch(error => {
                 console.error('Fetch error:', error);
             });
+        }
+        }
+    };
+
+    const handleDislikeAnswer = (answerId) => {
+        if(loggedInUser) {
+            const likedAnswer = answer.find((answer) => answer.id === answerId);
+    
+        if (likedAnswer) {
+            const likeCount = --likedAnswer.likes;
+    
+            fetch(`http://localhost:8080/answers/${answerId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ likes: likeCount }),
+            })
+            .then(res => res.json())
+            .then(updatedAnswer => {
+                setAnswers((prevAnswers) =>
+                    prevAnswers.map((prevAnswer) =>
+                        prevAnswer.id === answerId
+                            ? { ...prevAnswer, likes: updatedAnswer.likes }
+                            : prevAnswer
+                    )
+                );
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+        }
         }
     };
     
@@ -253,7 +292,7 @@ const Question = () => {
                                             <p>{answer.answer}</p>
                                         </div>
                                         <div className="likes">
-                                            <h4>Likes: <button onClick={handleLikeAnswer}>Like</button> {answer.likes} <button>Unlike</button></h4>
+                                            <h4>Likes: <button onClick={() => handleLikeAnswer(answer.id)}>Like</button> {answer.likes} <button onClick={() => handleDislikeAnswer(answer.id)}>Unlike</button></h4>
                                             <h4>Answered: {answer.answered}</h4>
                                             <h4>Modified: {answer.modified ? new Date(answer.modifiedDate).toLocaleString() : 'Not Modified'}</h4>
                                             {

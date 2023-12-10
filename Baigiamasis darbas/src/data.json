@@ -63,7 +63,7 @@
       "userid": 1,
       "topic": "React Native and React and",
       "question": "I have started to learn React out of curiosity and wanted to know the difference between React and React Native - though could not find a satisfactory answer using Google. React and React Native seems to have the same format. Do they have completely different syntax???",
-      "likes": 0,
+      "likes": 1,
       "modified": true,
       "liked": false,
       "modifiedDate": "2023-12-08T16:27:16.638Z",
@@ -74,7 +74,7 @@
       "userid": 1,
       "topic": "npx and npm",
       "question": "I have just started learning React, and Facebook helps in simplifying the initial setup by providing the following ready-made project. If I have to install the skeleton project I have to type npx create-react-app my-app in command-line. I  was wondering why does the Facebook in Github have npx create-react-app my-app rather than npm create-react-app my-app?",
-      "likes": 0,
+      "likes": 1,
       "modified": false,
       "liked": false,
       "modifiedDate": "",
@@ -136,7 +136,7 @@
       "questionId": 1,
       "userId": 2,
       "answer": "ReactJS is a JavaScript library, supporting both front-end web and being run on a server, for building user interfaces and web applications. It follows the concept of reusable components. React Native is a mobile framework that makes use of the JavaScript engine available on the host, allowing you to build mobile applications for different platforms (iOS, Android, and Windows Mobile) in JavaScript that allows you to use ReactJS to build reusable components and communicate with native components.",
-      "likes": 0,
+      "likes": 2,
       "modified": true,
       "modifiedDate": "2023-12-08T13:14:52.404Z",
       "answered": "2023-12-05"
@@ -146,7 +146,7 @@
       "questionId": 2,
       "userId": 4,
       "answer": "npx is a npm package runner (x probably stands for eXecute). One common way to use npx is to download and run a package temporarily or for trials. create-react-app is an npm package that is expected to be run only once in a project's lifecycle. Hence, it is preferred to use npx to install and run it in a single step. As mentioned in the main page https://www.npmjs.com/package/npx, npx can run commands in the PATH or from node_modules/.bin by default.",
-      "likes": 0,
+      "likes": 1,
       "modified": false,
       "modifiedDate": "",
       "answered": "2023-01-14"
@@ -167,7 +167,7 @@
       "modified": true,
       "modifiedDate": "2023-12-08T14:46:40.846Z",
       "id": 4,
-      "likes": 0
+      "likes": 4
     },
     {
       "id": "be0a6aef-1081-441c-8b66-6519e3c426f4",
@@ -183,7 +183,7 @@
       "questionId": "1",
       "userId": 3,
       "answer": "Here's what you need to know",
-      "likes": 0,
+      "likes": 1,
       "modified": false,
       "answered": "2023-12-08T12:08:53.373Z"
     },
