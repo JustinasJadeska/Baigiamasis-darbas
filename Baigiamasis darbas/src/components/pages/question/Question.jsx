@@ -6,9 +6,9 @@ import ForumAnswersContext from "../../../contexts/AnswersContext";
 import { Link } from "react-router-dom";
 import UsersContext from "../../../contexts/UsersContext";
 import AddAnswer from "../../UI/addAnswer/AddAnswer";
-import { UsersProvider } from "../../../contexts/UsersContext";
 
 const StyledMain = styled.main`
+    min-height: 100vh;
     background-color: #191919;
     color: white;
     position: relative;
@@ -120,6 +120,8 @@ const Question = () => {
     const {loggedInUser} = useContext(UsersContext);
     const [showTextarea, setShowTexarea] = useState(false);
     const [modifiedDate, setModifiedDate] = useState(null);
+    const [likes, setLikes] = useState('')
+    const [answerLikes, setAnswerLikes] = useState('')
 
     useEffect(() => {
         fetch(`http://localhost:8080/questions/${id}`)
@@ -140,6 +142,67 @@ const Question = () => {
             setAnswers(data.filter(answer => answer.questionId === id))
             })
     }, [id])
+
+    const handleLike = () => {
+        const likeCount = question.likes + 1;
+        setLikes(likeCount);
+        fetch(`http://localhost:8080/questions/${question.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({likes: likeCount}),
+        });
+        setQuestion((prevQuestion) => ({
+            ...prevQuestion,
+            likes: likeCount
+        }))
+    }
+
+    const handleDislike = () => {
+        const likeCount = question.likes - 1;
+        setLikes(likeCount);
+        fetch(`http://localhost:8080/questions/${question.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({likes: likeCount}),
+        });
+        setQuestion((prevQuestion) => ({
+            ...prevQuestion,
+            likes: likeCount
+        }))
+    }
+
+    const handleLikeAnswer = (answerId) => {
+        const likedAnswer = answers.find((answer) => answer.id === answerId);
+    
+        if (likedAnswer) {
+            const likeCount = likedAnswer.likes + 1;
+    
+            fetch(`http://localhost:8080/answers/${answerId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ likes: likeCount }),
+            })
+            .then(res => res.json())
+            .then(updatedAnswer => {
+                setAnswer((prevAnswers) =>
+                    prevAnswers.map((prevAnswer) =>
+                        prevAnswer.id === answerId
+                            ? { ...prevAnswer, likes: updatedAnswer.likes }
+                            : prevAnswer
+                    )
+                );
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+        }
+    };
     
     return ( 
         <StyledMain>
@@ -150,7 +213,7 @@ const Question = () => {
                     <p>{question.question}</p>
                 </div>
                 <div className="likes2">
-                    <h4>Likes: <button>-</button> {question.likes} <button>+</button></h4>
+                    <h4>Likes: <button onClick={handleLike}>Like</button> {question.likes} <button onClick={handleDislike}>Unlike</button> </h4>
                     <h4>Asked: {question.asked}</h4>
                     <h4>Modified: {question.modified ? new Date(question.modifiedDate).toLocaleString() : 'Not Modified'}</h4>
                     {
@@ -190,7 +253,7 @@ const Question = () => {
                                             <p>{answer.answer}</p>
                                         </div>
                                         <div className="likes">
-                                            <h4>Likes: <button>-</button> {answer.likes} <button>+</button></h4>
+                                            <h4>Likes: <button onClick={handleLikeAnswer}>Like</button> {answer.likes} <button>Unlike</button></h4>
                                             <h4>Answered: {answer.answered}</h4>
                                             <h4>Modified: {answer.modified ? new Date(answer.modifiedDate).toLocaleString() : 'Not Modified'}</h4>
                                             {
