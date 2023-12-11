@@ -296,6 +296,13 @@ const Question = () => {
                     <div className="addAnswer">
                         <h2>Answers:</h2>
                         {
+                            loggedInUser ? (
+                                null
+                            ) : (
+                                <p>If you want to add answer Log In or Sign Up.</p>
+                            )
+                        }
+                        {
                             loggedInUser && 
                             <button
                             onClick={() => {setShowTexarea(true)}}

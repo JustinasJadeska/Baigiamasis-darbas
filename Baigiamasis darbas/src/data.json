@@ -165,23 +165,13 @@
       "id": 3
     },
     {
-      "answer": "As the name implies, ReactDOM is the glue between React and the DOM. Often, you will only use it for one single thing: mounting with ReactDOM.render(). Another useful feature of ReactDOM is ReactDOM.findDOMNode() which you can use to gain direct access to a DOM element. (Something you should use sparingly in React apps, but it can be necessary.) If your app is 'isomorphic', you would also use ReactDOM.renderToString() in your back-end code.",
+      "answer": "As the name implies, ReactDOM is the glue between React and the DOM. Often, you will only use it for one single thing: mounting with ReactDOM.render(). Another useful feature of ReactDOM is ReactDOM.findDOMNode() which you can use to gain direct access to a DOM element. (Something you should use sparingly in React apps, but it can be necessary.) If your app is 'isomorphic', you would also use ReactDOM.renderToString() in your back-end code!",
       "questionId": 4,
       "userId": 1,
+      "likes": 3,
       "modified": true,
-      "answered": "2021-12-26",
-      "modifiedDate": "2023-12-08T14:46:40.846Z",
-      "id": 4,
-      "likes": 3
-    },
-    {
-      "answer": "I can help you.",
-      "questionId": "c7a108cf-9cc1-490a-8508-66c4829a9ba2",
-      "userId": 1,
-      "likes": 0,
-      "modified": true,
-      "modifiedDate": "2023-12-08T16:25:17.288Z",
-      "id": "82d5b6b0-d206-4c9b-bc0a-e68ac3f7edce"
+      "modifiedDate": "12/11/2023, 7:24:25 PM",
+      "id": 4
     },
     {
       "answer": "Good question and good answer",
