@@ -13,9 +13,8 @@ const StyledLogin = styled.main`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
 
-    height: calc(100vh - 93px);
+    min-height: 100vh;
     box-sizing: border-box;
     background-color: #191919;
     color: white;

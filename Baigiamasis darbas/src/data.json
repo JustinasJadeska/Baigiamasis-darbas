@@ -74,7 +74,7 @@
       "userid": 1,
       "topic": "npx and npm",
       "question": "I have just started learning React, and Facebook helps in simplifying the initial setup by providing the following ready-made project. If I have to install the skeleton project I have to type npx create-react-app my-app in command-line. I  was wondering why does the Facebook in Github have npx create-react-app my-app rather than npm create-react-app my-app?",
-      "likes": 1,
+      "likes": 2,
       "modified": false,
       "liked": false,
       "modifiedDate": "",
@@ -101,13 +101,6 @@
       "asked": "2021-12-25"
     },
     {
-      "id": "6222bf44-7de0-4a2e-8c7e-70db69991c1e",
-      "userid": 1,
-      "topic": "What is react?",
-      "question": "What is react and how does it work?",
-      "asked": "2023-12-07"
-    },
-    {
       "id": "c7a108cf-9cc1-490a-8508-66c4829a9ba2",
       "userid": 2,
       "topic": "About React",
@@ -124,10 +117,20 @@
       "topic": "Meaning of life",
       "question": "What is the meaning of life?",
       "asked": "2023-12-09",
-      "likes": 0,
+      "likes": 1,
       "modified": false,
       "liked": false,
       "modifiedDate": "2023-12-09T14:19:37.700Z"
+    },
+    {
+      "id": "e2536d7e-100e-4947-9b92-7ff3c3d6ff12",
+      "userid": 3,
+      "topic": "Marvel",
+      "question": "Do you like marvel movies?",
+      "asked": "2023-12-11",
+      "likes": 2,
+      "modified": false,
+      "modifiedDate": "2023-12-11T07:00:32.903Z"
     }
   ],
   "answers": [
@@ -157,6 +160,7 @@
       "userId": 1,
       "likes": 2,
       "modified": true,
+      "answered": "2022-08-01",
       "modifiedDate": "2023-12-08T16:26:20.905Z",
       "id": 3
     },
@@ -165,27 +169,10 @@
       "questionId": 4,
       "userId": 1,
       "modified": true,
+      "answered": "2021-12-26",
       "modifiedDate": "2023-12-08T14:46:40.846Z",
       "id": 4,
-      "likes": 4
-    },
-    {
-      "id": "be0a6aef-1081-441c-8b66-6519e3c426f4",
-      "questionId": "6222bf44-7de0-4a2e-8c7e-70db69991c1e",
-      "userId": 3,
-      "answer": "I don't know, sorry...",
-      "likes": 0,
-      "modified": false,
-      "answered": "2023-12-07T15:17:23.827Z"
-    },
-    {
-      "id": "3ee8442c-e08d-43ab-bd29-50afa38453cb",
-      "questionId": "1",
-      "userId": 3,
-      "answer": "Here's what you need to know",
-      "likes": 1,
-      "modified": false,
-      "answered": "2023-12-08T12:08:53.373Z"
+      "likes": 3
     },
     {
       "answer": "I can help you.",
@@ -195,6 +182,15 @@
       "modified": true,
       "modifiedDate": "2023-12-08T16:25:17.288Z",
       "id": "82d5b6b0-d206-4c9b-bc0a-e68ac3f7edce"
+    },
+    {
+      "answer": "Good question and good answer",
+      "questionId": "98139443-99f9-4f96-b5b9-210549c7bdec",
+      "userId": 1,
+      "likes": 1,
+      "modified": true,
+      "modifiedDate": "2023-12-11T06:45:16.217Z",
+      "id": "19d0779b-54ce-4135-9a2f-1c89bbb906c0"
     }
   ]
 }

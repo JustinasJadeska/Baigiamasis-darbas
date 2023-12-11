@@ -12,7 +12,6 @@ const StyledDiv = styled.div`
         padding: 10px 20px;
         border: 1px solid #ae00ff;
         border-radius: 5px;
-        width: 100%;
         box-sizing: border-box;
     }
 
@@ -28,6 +27,10 @@ const StyledDiv = styled.div`
 
     > textarea:hover{
         border: 2px solid #ae00ff;
+    }
+
+    > p {
+        width: 200px;
     }
 `
 

@@ -54,7 +54,7 @@ const AddAnswer = () => {
             answer: answerText,
             likes: 0,
             modified: false,
-            answered: new Date().toISOString()
+            answered: new Date().toLocaleString()
         }
         setAnswer({type: AnswersActionTypes.add, data: values})
         setAnswerText('')
@@ -69,6 +69,7 @@ const AddAnswer = () => {
             rows="6" 
             placeholder="Enter your answer here..."
             onChange={(e) => setAnswerText(e.target.value)}
+            value={answerText}
             ></textarea>
             <button onClick={handleSubmit}>Answer</button>
         </StyledAnswer>

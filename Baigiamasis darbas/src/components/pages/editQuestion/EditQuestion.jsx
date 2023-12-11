@@ -114,7 +114,7 @@ const EditQuestion = () => {
                             ...values
                         }
                         finalValues.modified = true;
-                        finalValues.modifiedDate = new Date().toISOString();
+                        finalValues.modifiedDate = new Date().toLocaleString();
                         setQuestions({
                             type: QuestionsActionTypes.edit,
                             id: id,
