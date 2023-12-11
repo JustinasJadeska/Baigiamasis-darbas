@@ -54,7 +54,7 @@ const AddAnswer = () => {
             answer: answerText,
             likes: 0,
             modified: false,
-            answered: new Date().toISOString()
+            answered: new Date().toLocaleString()
         }
         setAnswer({type: AnswersActionTypes.add, data: values})
         setAnswerText('')

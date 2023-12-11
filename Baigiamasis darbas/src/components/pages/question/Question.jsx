@@ -87,7 +87,20 @@ const StyledMain = styled.main`
         margin-left: 10px;
         font-weight: 600;
         cursor: pointer;
-        width: 80px;
+        background-color: #ffffff00;
+        border: none;
+    }
+
+    .buttons > button:nth-child(1){
+        color: #ffdd00;
+    }
+
+    .buttons > button:nth-child(2){
+        color: #e73c3c;
+    }
+
+    .buttons > button:hover {
+        text-decoration: underline;
     }
 
     > a > button {
@@ -106,6 +119,11 @@ const StyledMain = styled.main`
     .bi {
         font-size: 18px;
         font-weight: 600;
+        cursor: pointer;
+    }
+
+    .bi-arrow-left-circle-fill {
+        
     }
 `
 
@@ -252,7 +270,7 @@ const Question = () => {
                     <p>{question.question}</p>
                 </div>
                 <div className="likes2">
-                    <h4>Likes: <button onClick={handleLike}>Like</button> {question.likes} <button onClick={handleDislike}>Unlike</button> </h4>
+                    <h4>Likes: <i className="bi bi-arrow-left-circle-fill" onClick={handleDislike}></i> {question.likes} <i className="bi bi-arrow-right-circle-fill" onClick={handleLike}></i></h4>
                     <h4>Asked: {question.asked}</h4>
                     <h4>Modified: {question.modified ? new Date(question.modifiedDate).toLocaleString() : 'Not Modified'}</h4>
                     {
@@ -260,7 +278,7 @@ const Question = () => {
                         <div className="buttons">
                             <button
                             onClick={() => navigate(`/questions/edit/question/${id}`)}
-                            >Edit</button>
+                            > <i className="bi bi-pencil-fill"></i> Edit</button>
                             <button
                             onClick={() => {
                                 setQuestions({
@@ -270,7 +288,7 @@ const Question = () => {
                                 })
                                 navigate('/questions/allQuestions')
                             }}
-                            >Delete</button>
+                            > <i className="bi bi-trash-fill"></i> Delete</button>
                         </div>
                     }
                 </div>
@@ -292,7 +310,9 @@ const Question = () => {
                                             <p>{answer.answer}</p>
                                         </div>
                                         <div className="likes">
-                                            <h4>Likes: <button onClick={() => handleLikeAnswer(answer.id)}>Like</button> {answer.likes} <button onClick={() => handleDislikeAnswer(answer.id)}>Unlike</button></h4>
+                                            <h4>Likes: <i className="bi bi-arrow-left-circle-fill" onClick={() => handleDislikeAnswer(answer.id)}></i> {answer.likes} <i className="bi bi-arrow-right-circle-fill" 
+                                            onClick={() => handleLikeAnswer(answer.id)}></i> 
+                                            </h4>
                                             <h4>Answered: {answer.answered}</h4>
                                             <h4>Modified: {answer.modified ? new Date(answer.modifiedDate).toLocaleString() : 'Not Modified'}</h4>
                                             {
@@ -302,16 +322,16 @@ const Question = () => {
                                                      onClick={() => {
                                                         navigate(`/questions/edit/answer/${answer.id}`)
                                                     }}
-                                                    >Edit</button>
+                                                    > <i className="bi bi-pencil-fill"></i> Edit</button>
                                                     <button
                                                         onClick={() => {
                                                             setAnswer({
                                                                 type: AnswersActionTypes.remove, 
                                                                 id: answer.id
                                                             })
-                                                            navigate('/questions/allQuestions')
+                                                            navigate(`/questions/${id}`)
                                                         }}
-                                                    >Delete</button>
+                                                    > <i className="bi bi-trash-fill"></i> Delete</button>
                                                 </div>
                                             }
                                         </div>

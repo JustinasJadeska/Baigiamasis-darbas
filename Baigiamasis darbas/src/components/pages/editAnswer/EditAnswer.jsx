@@ -13,7 +13,7 @@ const StyledMain = styled.main`
     justify-content: center;
     position: relative;
 
-    height: calc(100vh - 93px);
+    min-height: 100vh;
     box-sizing: border-box;
     background-color: #191919;
     color: white;
@@ -111,7 +111,7 @@ const EditAnswer = () => {
                             ...values,
                         }
                         finalValues.modified = true;
-                        finalValues.modifiedDate = new Date().toISOString();
+                        finalValues.modifiedDate = new Date().toLocaleString();
                         setAnswer({
                             type: AnswersActionTypes.edit,
                             id: id,
