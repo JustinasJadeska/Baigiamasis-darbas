@@ -47,7 +47,7 @@ const SortQuestions = ({onSort}) => {
           .catch((error) => {
             console.error("Error fetching or sorting questions:", error);
           });
-      }, [onSort, sortOrder]);
+      }, [sortOrder]);
     
       const handleSort = () => {
         setSortOrder(sortOrder === "asc" ? "desc" : "asc");
