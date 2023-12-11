@@ -69,6 +69,7 @@ const AddAnswer = () => {
             rows="6" 
             placeholder="Enter your answer here..."
             onChange={(e) => setAnswerText(e.target.value)}
+            value={answerText}
             ></textarea>
             <button onClick={handleSubmit}>Answer</button>
         </StyledAnswer>
