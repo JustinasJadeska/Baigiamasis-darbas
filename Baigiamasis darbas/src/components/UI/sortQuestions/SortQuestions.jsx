@@ -30,7 +30,7 @@ const StyledButton = styled.div`
 const SortQuestions = ({onSort}) => {
 
     const [questions, setQuestions] = useState([]);
-    const [sortOrder, setSortOrder] = useState("asc");
+    const [sortOrder, setSortOrder] = useState("desc");
 
     useEffect(() => {
         fetch("http://localhost:8080/questions")

@@ -104,7 +104,7 @@ const AddQuestion = () => {
                 ...values,
                 likes: 0,
                 modified: false,
-                modifiedDate: new Date().toISOString()
+                modifiedDate: new Date().toLocaleString()
             }
             setQuestions({
                 type: QuestionsActionTypes.add,

@@ -144,14 +144,11 @@ const Question = () => {
         fetch(`http://localhost:8080/questions/${id}`)
         .then(res => res.json())
         .then(data => {
-            if (!data.topic) {
-                navigate('/');
-              }
-              setQuestion(data);
-              if (data.modified) {
+            setQuestion(data);
+            if (data.modified) {
                 const formattedDate = new Date(data.modified).toLocaleString();
                 setModifiedDate(formattedDate);
-              }
+            }
         })
         fetch(`http://localhost:8080/questions/${id}/answers`)
         .then(res => res.json())

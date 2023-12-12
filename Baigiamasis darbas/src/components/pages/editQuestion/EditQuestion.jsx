@@ -80,9 +80,6 @@ const EditQuestion = () => {
         fetch(`http://localhost:8080/questions/${id}`)
         .then(res => res.json())
         .then( data => {
-            if(!data.topic){
-                navigate('/')
-            }
             setFormValues({
                 ...data
             })

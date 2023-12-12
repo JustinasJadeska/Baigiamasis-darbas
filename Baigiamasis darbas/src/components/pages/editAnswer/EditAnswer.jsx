@@ -79,9 +79,6 @@ const EditAnswer = () => {
         fetch(`http://localhost:8080/answers/${id}`)
         .then(res => res.json())
         .then(data => {
-            if(!data.answer || !data.id){
-                navigate('/')
-            }
             setFormValues({
                 answer: data.answer,
                 questionId: data.questionId,
