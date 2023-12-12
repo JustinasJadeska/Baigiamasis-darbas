@@ -299,7 +299,7 @@ const Question = () => {
                             loggedInUser ? (
                                 null
                             ) : (
-                                <p>If you want to add answer Log In or Sign Up.</p>
+                                <p>If you want to add an answer Log In or Sign Up.</p>
                             )
                         }
                         {
