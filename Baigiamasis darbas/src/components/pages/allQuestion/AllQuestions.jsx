@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import QuestionCard from "../questionCard/QuestionCard";
-import ForumQuestionsContext from "../../../contexts/QuestionsContext";
 import UsersContext from "../../../contexts/UsersContext";
 import SortQuestions from "../../UI/sortQuestions/SortQuestions";
 
@@ -72,7 +71,6 @@ const StyledQuestions = styled.div`
 `
 const AllQuestions = () => {
 
-    const {questions, setQuestions} = useContext(ForumQuestionsContext);
     const {loggedInUser} = useContext(UsersContext);
     const [filterType, setFilterType] = useState('all');
     const [allAnswers, setAllAnswers] = useState([]);
@@ -132,9 +130,7 @@ const AllQuestions = () => {
             </div>
             <h1>Questions</h1>
             <SortQuestions
-                questions={questions}
                 onSort={handleSort}
-                sortedQuestions={sortedQuestions}
             />
             <div>
                 {
