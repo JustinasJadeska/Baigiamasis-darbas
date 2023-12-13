@@ -55,6 +55,14 @@
       "passwordNormal": "Password123.",
       "password": "$2a$08$yy2zhQDklv6VGNm456GEK.ojllmosDsDZzFkAgDWMjiK5uccUc4Mi",
       "image": "https://images.pexels.com/photos/842980/pexels-photo-842980.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    },
+    {
+      "id": "126d44e3-ad11-4e1b-859c-246cfd5a68cf",
+      "name": "Bandymas",
+      "email": "bandymas@gmail.com",
+      "passwordNormal": "Password2.",
+      "password": "$2a$08$qdjxZyI0Nk7O2qq76lvtNO.kiOLUbpyk4fMwyD25Q6k4TL68qSama",
+      "image": "https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     }
   ],
   "questions": [
@@ -138,9 +146,29 @@
       "topic": "About God",
       "question": "Is God real???",
       "asked": "2023-12-12",
-      "likes": 0,
+      "likes": 1,
       "modified": true,
       "modifiedDate": "12/12/2023, 9:03:56 AM"
+    },
+    {
+      "id": "4c959650-f293-40f5-a67e-b0ccbbb336e1",
+      "userid": "d3fb28fb-90c4-4114-972e-1dd0a19fdb41",
+      "topic": "BAndymas",
+      "question": "BAndymas",
+      "asked": "2023-12-12",
+      "likes": 0,
+      "modified": false,
+      "modifiedDate": "12/12/2023, 1:23:10 PM"
+    },
+    {
+      "id": "ff9465f1-20e1-43f8-8b31-29ecbad256eb",
+      "userid": "77598949-c50a-45b0-b820-5d4b5ecf88ec",
+      "topic": "Bandymas",
+      "question": "BAndymas",
+      "likes": 0,
+      "modified": false,
+      "modifiedDate": "12/13/2023, 11:40:24 AM",
+      "asked": "12/13/2023, 11:40:24 AM"
     }
   ],
   "answers": [
@@ -197,7 +225,7 @@
       "answer": "Yes or maybe no...Who knows...",
       "questionId": "4c4f9ca0-6acf-4ec6-970c-b71b4de74b8b",
       "userId": 1,
-      "likes": 0,
+      "likes": 1,
       "modified": true,
       "modifiedDate": "12/12/2023, 9:03:27 AM",
       "id": "86c0e688-75bf-45a5-8b77-64bbf137ae7b"
