@@ -12,6 +12,7 @@ const StyledQuestions = styled.div`
     color: white;
     
     > h1 {
+        font-size: 48px;
         margin: 0;
         text-align: center;
         padding: 20px 0 20px 0;
@@ -108,7 +109,7 @@ const AllQuestions = () => {
     return ( 
         <StyledQuestions>
             {
-                loggedInUser && <Link to='/questions/addNew'><button>Ask Question</button></Link>
+                loggedInUser && <Link to='/questions/addNew'><button><i class="bi bi-plus-lg"></i> Ask Question</button></Link>
             }
             
             <div className="filter-buttons">
