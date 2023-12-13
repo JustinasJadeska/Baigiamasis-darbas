@@ -80,11 +80,14 @@ const EditQuestion = () => {
         fetch(`http://localhost:8080/questions/${id}`)
         .then(res => res.json())
         .then( data => {
+            if(!data.topic){
+                navigate('/')
+            }
             setFormValues({
                 ...data
             })
         })
-    }, [])
+    }, [id, navigate])
 
     const validationSchema = Yup.object({
         topic: Yup.string()
@@ -117,7 +120,9 @@ const EditQuestion = () => {
                             id: id,
                             data: finalValues
                         });
-                        navigate(`/questions/allQuestions`) 
+                        setTimeout(() => {
+                            navigate(`/questions/${id}`);
+                          }, 0); 
                     }}
                     >
                         {(props) => (

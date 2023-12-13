@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import {v4 as uuid} from 'uuid';
 import styled from "styled-components";
 import ForumAnswersContext from "../../../contexts/AnswersContext";
@@ -35,12 +35,13 @@ const StyledAnswer = styled.div`
     }
 `
 
-const AddAnswer = () => {
+const AddAnswer = ({onAnswerSubmit}) => {
 
     const {setAnswer, AnswersActionTypes} = useContext(ForumAnswersContext)
     const [answerText, setAnswerText] = useState('')
     const {loggedInUser} = useContext(UsersContext);
     const {id} = useParams();
+    const [answerSubmitted, setAnswerSubmitted] = useState(false);
 
     const handleSubmit = () => {
         if(answerText.trim() === ''){ 
@@ -57,21 +58,33 @@ const AddAnswer = () => {
             answered: new Date().toLocaleString()
         }
         setAnswer({type: AnswersActionTypes.add, data: values})
-        setAnswerText('')
+        setAnswerText('');
+        setAnswerSubmitted(true);
+    }
+
+    const handleShowTextarea = () => {
+        setAnswerSubmitted(false);
     }
 
     return ( 
         <StyledAnswer>
-            <textarea 
-            name="answer" 
-            id="answer" 
-            cols="61" 
-            rows="6" 
-            placeholder="Enter your answer here..."
-            onChange={(e) => setAnswerText(e.target.value)}
-            value={answerText}
-            ></textarea>
-            <button onClick={handleSubmit}>Answer</button>
+            {!answerSubmitted && (
+                <textarea
+                    name="answer"
+                    id="answer"
+                    cols="61"
+                    rows="6"
+                    placeholder="Enter your answer here..."
+                    onChange={(e) => setAnswerText(e.target.value)}
+                    value={answerText}
+                ></textarea>
+            )}
+            {!answerSubmitted && (
+                <button onClick={handleSubmit}>Answer</button>
+            )}
+            {answerSubmitted && (
+                <button onClick={handleShowTextarea}>Add Another Answer</button>
+            )}
         </StyledAnswer>
      );
 }

@@ -131,7 +131,6 @@ const Register = () => {
                         id: uuid(),
                         name: values.name,
                         email: values.email,
-                        passwordNormal: values.password,
                         password: bcrypt.hashSync(values.password, 8),
                         image: values.image
                 }

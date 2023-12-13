@@ -7,7 +7,7 @@ const StyledButton = styled.div`
     align-items: center;
     justify-content: center;
 
-    > button {
+    div > button {
         font-size: 16px;
         cursor: pointer;
         border: none;
@@ -18,11 +18,11 @@ const StyledButton = styled.div`
         font-weight: 600;
     }
 
-    > button:hover {
+    div > button:hover {
         text-decoration: underline;
     }
 
-    > button.active {
+    div > button.active {
         background-color: #ffdd003a;
     }
 `
@@ -49,15 +49,25 @@ const SortQuestions = ({onSort}) => {
           });
       }, [sortOrder]);
     
-      const handleSort = () => {
+      const handleAscSort = () => {
         setSortOrder(sortOrder === "asc" ? "desc" : "asc");
       };
 
+      const handleDescSort = () => {
+        setSortOrder(sortOrder === "desc" ? "asc" : "desc");
+      }
+
     return ( 
         <StyledButton>
-            <button onClick={handleSort} className={sortOrder === "asc" ? "active" : ""}>
-                Sort by Date
-            </button>
+            <p>Sort by Date:</p>
+            <div>
+              <button onClick={handleAscSort} className={sortOrder === "desc" ? "active" : ""}>
+                  Newest Questions
+              </button>
+              <button onClick={handleDescSort} className={sortOrder === "asc" ? "active" : ""}>
+                  Oldest Questions
+              </button>
+            </div>
         </StyledButton>
      );
 }

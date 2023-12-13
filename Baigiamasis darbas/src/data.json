@@ -55,6 +55,21 @@
       "passwordNormal": "Password123.",
       "password": "$2a$08$yy2zhQDklv6VGNm456GEK.ojllmosDsDZzFkAgDWMjiK5uccUc4Mi",
       "image": "https://images.pexels.com/photos/842980/pexels-photo-842980.jpeg?auto=compress&cs=tinysrgb&w=1200"
+    },
+    {
+      "id": "126d44e3-ad11-4e1b-859c-246cfd5a68cf",
+      "name": "Bandymas",
+      "email": "bandymas@gmail.com",
+      "passwordNormal": "Password2.",
+      "password": "$2a$08$qdjxZyI0Nk7O2qq76lvtNO.kiOLUbpyk4fMwyD25Q6k4TL68qSama",
+      "image": "https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+      "id": "690717dd-0e41-4d2a-b2a6-c7aabc810975",
+      "name": "Algis",
+      "email": "Algimantas@gmail.com",
+      "password": "$2a$08$LIVJ/9jw1d6luBXQYXODPOkkQpSGUawRLehJ3TPk1AWiJ8YM3tdkm",
+      "image": "https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     }
   ],
   "questions": [
@@ -133,14 +148,14 @@
       "modifiedDate": "2023-12-11T07:00:32.903Z"
     },
     {
-      "id": "4c4f9ca0-6acf-4ec6-970c-b71b4de74b8b",
+      "id": "754ad719-5ee0-4a3e-952c-90fc42fb6c33",
       "userid": 1,
-      "topic": "About God",
-      "question": "Is God real???",
-      "asked": "2023-12-12",
+      "topic": "Diablo 4",
+      "question": "Is diablo 4 a good game?",
       "likes": 0,
-      "modified": true,
-      "modifiedDate": "12/12/2023, 9:03:56 AM"
+      "modified": false,
+      "modifiedDate": "12/13/2023, 2:32:10 PM",
+      "asked": "12/13/2023, 2:32:10 PM"
     }
   ],
   "answers": [
@@ -168,7 +183,7 @@
       "answer": "You cannot use any of the existing lifecycle methods (componentDidMount, componentDidUpdate, componentWillUnmount etc.) in a hook. They can only be used in class components. And with Hooks you can only use in functional components.",
       "questionId": 3,
       "userId": 1,
-      "likes": 2,
+      "likes": 3,
       "modified": true,
       "answered": "2022-08-01",
       "modifiedDate": "2023-12-08T16:26:20.905Z",
@@ -194,13 +209,58 @@
       "id": "19d0779b-54ce-4135-9a2f-1c89bbb906c0"
     },
     {
-      "answer": "Yes or maybe no...Who knows...",
-      "questionId": "4c4f9ca0-6acf-4ec6-970c-b71b4de74b8b",
-      "userId": 1,
+      "id": "00967060-7680-468b-b76e-3c58258df392",
+      "questionId": "e2536d7e-100e-4947-9b92-7ff3c3d6ff12",
+      "userId": "126d44e3-ad11-4e1b-859c-246cfd5a68cf",
+      "answer": "aga",
       "likes": 0,
-      "modified": true,
-      "modifiedDate": "12/12/2023, 9:03:27 AM",
-      "id": "86c0e688-75bf-45a5-8b77-64bbf137ae7b"
+      "modified": false,
+      "answered": "12/13/2023, 1:05:43 PM"
+    },
+    {
+      "id": "8cfcfa59-0fd0-4710-b649-729d70f3a763",
+      "questionId": "3",
+      "userId": "126d44e3-ad11-4e1b-859c-246cfd5a68cf",
+      "answer": "Sutinku",
+      "likes": 1,
+      "modified": false,
+      "answered": "12/13/2023, 1:53:24 PM"
+    },
+    {
+      "id": "01ada754-a780-4b20-866a-c634653e5a81",
+      "questionId": "2",
+      "userId": 1,
+      "answer": "Pridedu",
+      "likes": 0,
+      "modified": false,
+      "answered": "12/13/2023, 2:30:38 PM"
+    },
+    {
+      "id": "2e479a2c-05f3-4ddb-873d-e05d925ebfb8",
+      "questionId": "4",
+      "userId": 1,
+      "answer": "Agree",
+      "likes": 0,
+      "modified": false,
+      "answered": "12/13/2023, 2:31:18 PM"
+    },
+    {
+      "id": "454e0440-8d25-4e6e-be9a-3bbfbe900898",
+      "questionId": "1",
+      "userId": 1,
+      "answer": "Agree",
+      "likes": 0,
+      "modified": false,
+      "answered": "12/13/2023, 2:31:31 PM"
+    },
+    {
+      "id": "101b1679-7ad1-4bc5-88d8-0e9aec5dd0ca",
+      "questionId": "754ad719-5ee0-4a3e-952c-90fc42fb6c33",
+      "userId": 1,
+      "answer": "Yes",
+      "likes": 0,
+      "modified": false,
+      "answered": "12/13/2023, 2:48:03 PM"
     }
   ]
 }

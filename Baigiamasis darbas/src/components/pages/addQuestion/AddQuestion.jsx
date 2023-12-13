@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import {v4 as uuid} from 'uuid';
 import styled from 'styled-components';
 import FormikInput from '../../UI/input/FormikInput';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import ForumQuestionsContext from '../../../contexts/QuestionsContext';
 import { Link, useNavigate } from 'react-router-dom';
 import UsersContext from '../../../contexts/UsersContext';
@@ -75,23 +75,20 @@ const AddQuestion = () => {
 
     const values = {
         topic: '',
-        question: '',
-        asked: ''
+        question: ''
     }
 
     const validationSchema = Yup.object({
         topic: Yup.string()
         .min(5, 'Minimum length 5 symbols ma friend')
+        .max(50, 'Maximum length 500 symbols')
         .required('This field must be filled')
         .trim(),
         question: Yup.string()
         .min(5, 'Minimum length 5 symbols ma friend')
+        .max(1000, 'Maximum length 1000 symbols')
         .required('This field must be filled')
-        .trim(),
-        asked: Yup.date()
-        .required('Date must be provided')
-        .min(new Date(0).toISOString(), 'Date must be after 1970-01-01')
-        .max(new Date().toISOString(), 'Date must be before now')
+        .trim()
     })
 
     const formik = useFormik({
@@ -104,15 +101,21 @@ const AddQuestion = () => {
                 ...values,
                 likes: 0,
                 modified: false,
-                modifiedDate: new Date().toLocaleString()
+                modifiedDate: new Date().toLocaleString(),
+                asked: new Date().toLocaleString()
             }
             setQuestions({
                 type: QuestionsActionTypes.add,
                 data: finalValues
             });
-            navigate('/questions/allQuestions')
         }
     })
+
+    useEffect(() => {
+        if (formik.submitCount > 0) {
+            navigate('/questions/allQuestions');
+        }
+    }, [formik.submitCount, navigate]);
 
     return ( 
         <StyledMain>
@@ -133,12 +136,7 @@ const AddQuestion = () => {
                 rows={5}
                 cols={22}
                 />
-                <FormikInput 
-                type='date'
-                name='asked'
-                formik={formik}
-                />
-                <input type="submit" value="Ask" />
+                <input type="submit" value="Ask" disabled={!formik.isValid}/>
             </form>
         </StyledMain>
      );

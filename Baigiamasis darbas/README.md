@@ -12,7 +12,7 @@ Nusinavigavę į reikiamą failą, pasileidžiame json serverį su komanda - npm
 
 Kitas žingsnis yra pasileisti react aplikaciją.
 
-Rect aplikacijos paleidimas!
+React aplikacijos paleidimas!
 
 # cd Baigiamasis darbas
 

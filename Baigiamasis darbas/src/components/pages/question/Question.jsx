@@ -144,6 +144,9 @@ const Question = () => {
         fetch(`http://localhost:8080/questions/${id}`)
         .then(res => res.json())
         .then(data => {
+            if (!data.topic) {
+                navigate('/');
+              }
             setQuestion(data);
             if (data.modified) {
                 const formattedDate = new Date(data.modified).toLocaleString();
@@ -173,7 +176,7 @@ const Question = () => {
                 likes: likeCount
         }))
         } else {
-            console.log('User is not logged in');
+            window.alert('You need to log in or sign in to vote.');
         } 
     }
 
@@ -193,7 +196,7 @@ const Question = () => {
                 likes: likeCount
             }))
         } else {
-            console.log('User is not logged in');
+            window.alert('You need to log in or sign in to vote.');
         }
     }
 
@@ -224,6 +227,8 @@ const Question = () => {
                 console.error('Fetch error:', error);
             });
         }
+        } else {
+            window.alert('You need to log in or sign in to vote.');
         }
     };
 
@@ -255,6 +260,8 @@ const Question = () => {
                 console.error('Fetch error:', error);
             });
         }
+        } else {
+            window.alert('You need to log in or sign in to vote.');
         }
     };
     
@@ -283,7 +290,9 @@ const Question = () => {
                                     id: id,
                                     answerId: answer.id
                                 })
-                                navigate('/questions/allQuestions')
+                                setTimeout(() => {
+                                    navigate(`/questions/allQuestions`);
+                                  }, 0); 
                             }}
                             > <i className="bi bi-trash-fill"></i> Delete</button>
                         </div>
@@ -291,7 +300,7 @@ const Question = () => {
                 </div>
                 <div className="answer">
                     <div className="addAnswer">
-                        <h2>Answers:</h2>
+                        <h2>Answers:</h2> 
                         {
                             loggedInUser ? (
                                 null
@@ -344,6 +353,9 @@ const Question = () => {
                             }
                     </div>
                 </div>
+                {!showTextarea && answers.length === 0 && (
+                    <p>No answers yet. Be the first to answer!</p>
+                )}
                 {showTextarea && <AddAnswer questionId={id} />}
             </div>
         </StyledMain>
