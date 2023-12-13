@@ -1,0 +1,83 @@
+import { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
+import UsersContext from "../../../contexts/UsersContext";
+import ForumQuestionsContext from "../../../contexts/QuestionsContext";
+
+const StyledDiv = styled.div`
+    min-height: 100vh;
+    color: white;
+    background-color: #191919;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > h1 {
+        font-size: 38px;
+        margin: 0;
+        text-align: center;
+        padding: 20px;
+        color: #ae00ff;
+    }
+
+    > div {
+        border: 2px solid #ae00ff;
+        border-radius: 5px;
+        padding: 10px;
+
+        width: 50%;
+        margin: 0px auto 20px;
+        background-color: #191919;
+
+        > h1 {
+            margin: 0;
+        }
+
+        > p {
+            line-height: 150%;
+        }
+    }
+`
+
+const MyQuestions = () => {
+
+    const {loggedInUser} = useContext(UsersContext);
+    const [sortedQuestions, setSortedQuestions] = useState([]);
+    const {questions, setQuestions, QuestionsActionTypes} = useContext(ForumQuestionsContext)
+
+    useEffect(() => {
+        fetch(`http://localhost:8080/questions`)
+        .then(res => res.json())
+        .then(data => {
+            setQuestions({
+                type: QuestionsActionTypes.get_all,
+                data: data
+            })
+        })
+    }, [])
+
+    useEffect(() => {
+        if (loggedInUser && questions.length > 0) {
+            const userQuestions = questions.filter((question) => question.userid === loggedInUser.id);
+            setSortedQuestions(userQuestions);
+        } else {
+            setSortedQuestions([]);
+        }
+    }, []);
+
+    return ( 
+        <StyledDiv>
+            <h1>My Questions</h1>
+            {sortedQuestions.map((question) => (
+                <div key={question.id}>
+                    <h1>{question.topic}</h1>
+                    <p>{question.question}</p>
+                    <p>Asked: {question.asked}</p>
+                    <p>Likes: {question.likes}</p>
+                </div>
+            ))}
+        </StyledDiv>
+    );
+}
+ 
+export default MyQuestions;

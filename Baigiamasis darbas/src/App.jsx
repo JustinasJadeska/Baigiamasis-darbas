@@ -10,6 +10,8 @@ import EditQuestion from './components/pages/editQuestion/EditQuestion';
 import EditAnswer from './components/pages/editAnswer/EditAnswer';
 import Login from './components/pages/login/Login';
 import Register from './components/pages/register/Register';
+import MyQuestions from './components/pages/myQuestions/MyQuestions';
+import MyAnswers from './components/pages/myAnswers/MyAnswers';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path='/user'>
           <Route path='login' element={<Login />}/>
           <Route path='register' element={<Register />}/>
+          <Route path='myQuestions' element={<MyQuestions />} />
+          <Route path='myAnswers' element={<MyAnswers />} />
         </Route>
       </Routes>
       <Footer />

@@ -116,6 +116,13 @@ const Header = () => {
                     <li
                     className={({isActive}) => isActive ? 'active' : ''}
                     ><NavLink to='/questions/allQuestions'>Forum</NavLink></li>
+                    {
+                    loggedInUser && (
+                        <>
+                           <li><NavLink to='/user/myQuestions'>My Questions</NavLink></li>
+                           <li><NavLink to='/user/myAnswers'>My Answers</NavLink></li>
+                        </>
+                    )}
                 </ul>
             </nav>
             {
