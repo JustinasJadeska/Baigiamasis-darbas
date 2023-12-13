@@ -63,6 +63,13 @@
       "passwordNormal": "Password2.",
       "password": "$2a$08$qdjxZyI0Nk7O2qq76lvtNO.kiOLUbpyk4fMwyD25Q6k4TL68qSama",
       "image": "https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    },
+    {
+      "id": "690717dd-0e41-4d2a-b2a6-c7aabc810975",
+      "name": "Algis",
+      "email": "Algimantas@gmail.com",
+      "password": "$2a$08$LIVJ/9jw1d6luBXQYXODPOkkQpSGUawRLehJ3TPk1AWiJ8YM3tdkm",
+      "image": "https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     }
   ],
   "questions": [
