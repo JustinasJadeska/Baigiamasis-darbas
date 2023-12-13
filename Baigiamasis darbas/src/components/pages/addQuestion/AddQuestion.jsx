@@ -108,7 +108,6 @@ const AddQuestion = () => {
                 type: QuestionsActionTypes.add,
                 data: finalValues
             });
-            // navigate('/questions/allQuestions')
         }
     })
 
@@ -137,7 +136,7 @@ const AddQuestion = () => {
                 rows={5}
                 cols={22}
                 />
-                <input type="submit" value="Ask" />
+                <input type="submit" value="Ask" disabled={!formik.isValid}/>
             </form>
         </StyledMain>
      );

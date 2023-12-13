@@ -300,7 +300,7 @@ const Question = () => {
                 </div>
                 <div className="answer">
                     <div className="addAnswer">
-                        <h2>Answers:</h2>
+                        <h2>Answers:</h2> 
                         {
                             loggedInUser ? (
                                 null
@@ -353,6 +353,9 @@ const Question = () => {
                             }
                     </div>
                 </div>
+                {!showTextarea && answers.length === 0 && (
+                    <p>No answers yet. Be the first to answer!</p>
+                )}
                 {showTextarea && <AddAnswer questionId={id} />}
             </div>
         </StyledMain>
