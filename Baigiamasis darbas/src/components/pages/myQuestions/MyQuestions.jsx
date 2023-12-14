@@ -32,6 +32,7 @@ const StyledDiv = styled.div`
 
         > h1 {
             margin: 0;
+            color: #ae00ff;
         }
 
         > p {
@@ -57,6 +58,11 @@ const StyledDiv = styled.div`
 
     > a > button:hover {
         text-decoration: underline;
+    }
+    
+    .question {
+        color: #ae00ff;
+        font-weight: 600;
     }
 `
 
@@ -96,8 +102,8 @@ const MyQuestions = () => {
                     <div key={question.id}>
                         <h1>{question.topic}</h1>
                         <p>{question.question}</p>
-                        <p>Asked: {question.asked}</p>
-                        <p>Likes: {question.likes}</p>
+                        <p><span className="question">Asked: </span> {question.asked}</p>
+                        <p><span className="question">Likes: </span> {question.likes}</p>
                     </div>
                 ))
             )}
