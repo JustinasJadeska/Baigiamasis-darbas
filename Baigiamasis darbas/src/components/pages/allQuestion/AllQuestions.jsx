@@ -109,7 +109,7 @@ const AllQuestions = () => {
     return ( 
         <StyledQuestions>
             {
-                loggedInUser && <Link to='/questions/addNew'><button><i class="bi bi-plus-lg"></i> Ask Question</button></Link>
+                loggedInUser && <Link to='/questions/addNew'><button><i className="bi bi-plus-lg"></i> Ask Question</button></Link>
             }
             
             <div className="filter-buttons">

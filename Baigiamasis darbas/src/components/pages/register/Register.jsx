@@ -59,6 +59,7 @@ const Register = () => {
 
     const formValues = {
         name: '',
+        gender: '',
         email: '',
         password: '',
         passwordRepeat: '',
@@ -88,7 +89,6 @@ const Register = () => {
         .trim(),
         image: Yup.string()
         .url('Field must be a valid url')
-        .required('This field must be filled')
         .trim()
     })
 
@@ -126,13 +126,15 @@ const Register = () => {
                     }
                 })
             }
+
             if(!users.find(user => user.name === values.name) && !users.find(user => user.email === values.email)){
                 const workingUser = {
                         id: uuid(),
                         name: values.name,
+                        gender: values.gender,
                         email: values.email,
                         password: bcrypt.hashSync(values.password, 8),
-                        image: values.image
+                        image: values.image || 'https://emedia1.nhs.wales/HEIW2/cache/file/F4C33EF0-69EE-4445-94018B01ADCF6FD4.png'
                 }
                 setUsers({
                     type: UsersActionTypes.add,

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import UsersContext from "../../../contexts/UsersContext";
 import ForumQuestionsContext from "../../../contexts/QuestionsContext";
+import { Link } from "react-router-dom";
 
 const StyledDiv = styled.div`
     min-height: 100vh;
@@ -31,11 +32,37 @@ const StyledDiv = styled.div`
 
         > h1 {
             margin: 0;
+            color: #ae00ff;
         }
 
         > p {
             line-height: 150%;
         }
+    }
+
+    .noQuestions {
+        line-height: 150%;
+        text-align: center;
+    }
+
+    > a > button {
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        color: #ae00ff;
+        background-color: #ffffff00;
+        margin-bottom: 20px;
+    }
+
+    > a > button:hover {
+        text-decoration: underline;
+    }
+    
+    .question {
+        color: #ae00ff;
+        font-weight: 600;
     }
 `
 
@@ -63,19 +90,26 @@ const MyQuestions = () => {
         } else {
             setSortedQuestions([]);
         }
-    }, []);
+    }, [loggedInUser, questions]);
 
     return ( 
         <StyledDiv>
             <h1>My Questions</h1>
-            {sortedQuestions.map((question) => (
-                <div key={question.id}>
-                    <h1>{question.topic}</h1>
-                    <p>{question.question}</p>
-                    <p>Asked: {question.asked}</p>
-                    <p>Likes: {question.likes}</p>
-                </div>
-            ))}
+            {loggedInUser && sortedQuestions.length === 0 ? (
+                <p className="noQuestions">No questions yet? Feel free to ask!</p>
+            ) : (
+                sortedQuestions.map((question) => (
+                    <div key={question.id}>
+                        <h1>{question.topic}</h1>
+                        <p>{question.question}</p>
+                        <p><span className="question">Asked: </span> {question.asked}</p>
+                        <p><span className="question">Likes: </span> {question.likes}</p>
+                    </div>
+                ))
+            )}
+            {
+                loggedInUser && <Link to='/questions/addNew'><button><i className="bi bi-plus-lg"></i> Ask Question</button></Link>
+            }
         </StyledDiv>
     );
 }

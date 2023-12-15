@@ -59,7 +59,6 @@ const SortQuestions = ({onSort}) => {
 
     return ( 
         <StyledButton>
-            <p>Sort by Date:</p>
             <div>
               <button onClick={handleAscSort} className={sortOrder === "desc" ? "active" : ""}>
                   Newest Questions
