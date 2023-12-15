@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import UsersContext from '../../../contexts/UsersContext';
 
@@ -22,19 +22,35 @@ const StyledHeader = styled.header`
         align-items: center;
         gap: 10px;
 
+        > a {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 20px;
+
+            > img {
+                width: 50px;
+            }
+
+            .logoName {
+                color: white;
+
+                > span {
+                    color: #ffdd00;
+                }
+            }
+        }
+
         > img {
             width: 50px;
             height: auto;
+            border-radius: 50px;
         }
 
-        > .logoName {
-            font-weight: 600;
-            font-size: 18px;
-
-            > span {
-                color: #ffdd00;
-            }
-        }
     }
 
     > nav > ul {
@@ -90,9 +106,14 @@ const StyledHeader = styled.header`
         cursor: pointer;
     }
 
-    .logout > span {
+    .logout > a > span {
         font-weight: 600;
         font-size: 16px;
+    }
+
+    .logout > a > img {
+        width: 60px;
+        border-radius: 50px;
     }
 
 `
@@ -105,8 +126,8 @@ const Header = () => {
     return ( 
         <StyledHeader>
             <div>
-                <img src="https://cdn2.iconfinder.com/data/icons/spring-flat-11/272/spring-bee-insect-honey-nectar-fly-bug-512.png" alt="logo image" />
-                <span className='logoName'>FORUM<span>BEE</span></span>
+                <NavLink to='/'><img src="https://cdn2.iconfinder.com/data/icons/spring-flat-11/272/spring-bee-insect-honey-nectar-fly-bug-512.png" alt="logo image" />
+                <span className='logoName'>FORUM<span>BEE</span></span></NavLink>
             </div>
             <nav>
                 <ul>
@@ -132,8 +153,8 @@ const Header = () => {
                     <button><NavLink to='/user/register' className={({isActive}) => isActive ? 'active' : ''}>Sign Up</NavLink></button>
                 </div> :
                 <div className='logout'>
-                    <img src={loggedInUser.image} alt={`${loggedInUser.name} profile picture`} />
-                    <span>{loggedInUser.name}</span>
+                    <Link to='/user/myProfile'><img src={loggedInUser.image} alt={`${loggedInUser.name} profile picture`} />
+                    <span>{loggedInUser.name}</span></Link>
                     <button
                     onClick={() => {
                         setLoggedInUser('');
