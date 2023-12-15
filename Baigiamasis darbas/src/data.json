@@ -6,7 +6,8 @@
       "email": "justin123@gmail.com",
       "passwordNormal": "Gameofthrones1.",
       "password": "$2a$08$ARy.nrqXfEsyE34PP4HOiuctWXd1vZTgaQQoNbG.FgKazRKW3HFkm",
-      "image": "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      "image": "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "aboutMe": "I like books."
     },
     {
       "id": 2,
