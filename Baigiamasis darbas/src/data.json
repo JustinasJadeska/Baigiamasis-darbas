@@ -72,6 +72,14 @@
       "email": "Justinas@gmail.com",
       "password": "$2a$08$zfiyuebKoqxLlgFWd2Oewek8xbc/vJQygEQXRWIk2CkbbV5JAIdlO",
       "image": "https://emedia1.nhs.wales/HEIW2/cache/file/F4C33EF0-69EE-4445-94018B01ADCF6FD4.png"
+    },
+    {
+      "id": "3c277135-79c4-420c-88ee-870a33b3d23f",
+      "name": "grete",
+      "gender": "",
+      "email": "grete@gmail.com",
+      "password": "$2a$08$nIvt/xGNI3YGON4Iu5VqJuVXCmxHtuTRsxYiPd.hXbezeAhQcjB7e",
+      "image": "https://emedia1.nhs.wales/HEIW2/cache/file/F4C33EF0-69EE-4445-94018B01ADCF6FD4.png"
     }
   ],
   "questions": [
@@ -206,7 +214,7 @@
       "questionId": "754ad719-5ee0-4a3e-952c-90fc42fb6c33",
       "userId": "9d54339a-f7ae-4926-86e2-89c47cc2b567",
       "answer": "Yes, very good!",
-      "likes": 0,
+      "likes": 4,
       "modified": false,
       "answered": "12/14/2023, 3:44:36 PM"
     }

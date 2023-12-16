@@ -7,6 +7,7 @@ import FormikInput from "../../UI/input/FormikInput";
 import { useContext, useState } from "react";
 import UsersContext from "../../../contexts/UsersContext";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const StyledLogin = styled.main`
     display: flex;
@@ -31,26 +32,52 @@ const StyledLogin = styled.main`
         align-items: center;
         gap: 10px;
 
+        .password-input-container {
+        position: relative;
+        width: 100%;
+        }
+
+        .password-input {
+        padding: 10px 40px 10px 20px;
+        font-weight: 600;
+        color: #ffffff;
+        background-color: #ae00ff;
+        border: 2px solid #ae00ff;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        }
+
+        .eye-icon {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        }
+
         > input {
-            padding: 10px 20px;
-            font-weight: 600;
-            color: #ffffff;
-            background-color: #ae00ff;
-            border: 2px solid #ae00ff;
-            border-radius: 5px;
-            cursor: pointer;
+        padding: 10px 20px;
+        font-weight: 600;
+        color: #ffffff;
+        background-color: #ae00ff;
+        border: 2px solid #ae00ff;
+        border-radius: 5px;
+        cursor: pointer;
         }
 
         > input:hover {
-            background-color: #ffbf00;
-            border: 2px solid #ffbf00;
+        background-color: #ffbf00;
+        border: 2px solid #ffbf00;
         }
     }
+
 `
 
 const Register = () => {
 
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
     const {users, setUsers, UsersActionTypes, setLoggedInUser} = useContext(UsersContext);
     const [failedRegister, setFailedRegister] = useState({
         email: '',
@@ -162,12 +189,18 @@ const Register = () => {
                 formik={formik}
                 placeholder='Enter your email'
                 />
-                <FormikInput 
-                type='password'
-                name='password'
-                formik={formik}
-                placeholder='Create password'
-                />
+                 <div className="password-input-container">
+                    <FormikInput
+                        type={showPassword ? 'text' : 'password'}
+                        name='password'
+                        formik={formik}
+                        placeholder='Create password'
+                        className="password-input"
+                    />
+                    <div className="eye-icon" onClick={() => setShowPassword(!showPassword)}>
+                        {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </div>
+                </div>
                 <FormikInput 
                 type='password'
                 name='passwordRepeat'
